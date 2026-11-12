@@ -1,0 +1,174 @@
+{
+ "version": 2,
+ "updated": "2026-11-12",
+ "coords": "WGS84 lat/lng (OpenStreetMap where pos=osm, otherwise approximate)",
+ "pois": [
+  {
+   "id": "entry",
+   "name": "Entry & Biennale Pass check",
+   "cat": "facility",
+   "icon": "ticket",
+   "desc": "Pass scanning outside Bara Darwaza, by the lake. The Biennale Pass covers entry to the fort, so no separate monument ticket is needed.",
+   "note": "",
+   "pos": "approx",
+   "lat": 28.60872,
+   "lng": 77.2419
+  },
+  {
+   "id": "bara",
+   "name": "Bara Darwaza",
+   "cat": "gate",
+   "desc": "The main western gateway in red sandstone, flanked by massive bastions and topped with domed kiosks. It looks out over the lake.",
+   "note": "",
+   "pos": "osm",
+   "lat": 28.608863,
+   "lng": 77.242318
+  },
+  {
+   "id": "humayun",
+   "name": "Humayun Darwaza",
+   "cat": "gate",
+   "desc": "The southern gate, named after the Mughal emperor Humayun.",
+   "note": "",
+   "pos": "osm",
+   "lat": 28.606881,
+   "lng": 77.245388
+  },
+  {
+   "id": "talaqi",
+   "name": "Talaqi Darwaza",
+   "cat": "gate",
+   "desc": "The northern gate, often called the Forbidden Gate.",
+   "note": "",
+   "pos": "osm",
+   "lat": 28.611714,
+   "lng": 77.241629
+  },
+  {
+   "id": "mosque",
+   "name": "Qila-i-Kuhna Mosque",
+   "cat": "monument",
+   "desc": "Built by Sher Shah Suri in 1541, this single-domed mosque has a prayer hall with five arched bays in red sandstone, with marble and slate inlay.",
+   "note": "",
+   "pos": "osm",
+   "lat": 28.609745,
+   "lng": 77.244816
+  },
+  {
+   "id": "shermandal",
+   "name": "Sher Mandal",
+   "cat": "monument",
+   "desc": "A two-storey octagonal tower of red sandstone. Humayun used it as a library and died in 1556 after a fall on its stairs.",
+   "note": "",
+   "pos": "osm",
+   "lat": 28.608658,
+   "lng": 77.24506
+  },
+  {
+   "id": "baoli",
+   "name": "Baoli (stepwell)",
+   "cat": "monument",
+   "desc": "A stepwell that descends in stages to the water.",
+   "note": "",
+   "pos": "osm",
+   "lat": 28.609224,
+   "lng": 77.244301
+  },
+  {
+   "id": "museum",
+   "name": "Archaeological Site Museum",
+   "cat": "museum",
+   "desc": "Objects found in excavations at the fort, from pottery to coins.",
+   "note": "",
+   "pos": "osm",
+   "lat": 28.608753,
+   "lng": 77.242454
+  },
+  {
+   "id": "excavation",
+   "name": "Excavation site",
+   "cat": "monument",
+   "icon": "dig",
+   "desc": "Excavated trenches showing layers of settlement across many centuries. Tradition links the site with Indraprastha of the Mahabharata.",
+   "note": "",
+   "pos": "approx",
+   "lat": 28.607843,
+   "lng": 77.246058
+  },
+  {
+   "id": "lake",
+   "name": "Purana Qila lake",
+   "cat": "garden",
+   "icon": "boat",
+   "desc": "The lake along the west side of the fort, with boating.",
+   "note": "",
+   "pos": "approx",
+   "lat": 28.6099,
+   "lng": 77.24085
+  },
+  {
+   "id": "infodesk",
+   "name": "Biennale info desk (example)",
+   "cat": "facility",
+   "icon": "info",
+   "desc": "Example point. Edit or delete it in Manage.",
+   "note": "Maps, programme guides and help with the Biennale app.",
+   "pos": "approx",
+   "lat": 28.609376,
+   "lng": 77.242397
+  },
+  {
+   "id": "toilets",
+   "name": "Toilets (approximate)",
+   "cat": "facility",
+   "icon": "toilet",
+   "desc": "Public toilets near the lake and entrance, as mapped on OpenStreetMap. Confirm on site.",
+   "note": "",
+   "pos": "osm",
+   "lat": 28.608233,
+   "lng": 77.240555
+  },
+  {
+   "id": "cafe",
+   "name": "Cafe (approximate)",
+   "cat": "facility",
+   "icon": "cafe",
+   "desc": "Approximate location. Confirm on site and adjust in Manage.",
+   "note": "",
+   "pos": "approx",
+   "lat": 28.609424,
+   "lng": 77.242919
+  },
+  {
+   "id": "parking",
+   "name": "Parking (approximate)",
+   "cat": "facility",
+   "icon": "parking",
+   "desc": "Car park near the lake and entrance, as mapped on OpenStreetMap. Confirm on site.",
+   "note": "",
+   "pos": "osm",
+   "lat": 28.607986,
+   "lng": 77.240582
+  },
+  {
+   "id": "exhibitA",
+   "name": "Exhibit spot A (example)",
+   "cat": "biennale",
+   "desc": "Example exhibit position on the north lawn.",
+   "note": "Replace with the real installation name, artist and timings.",
+   "pos": "approx",
+   "lat": 28.61008,
+   "lng": 77.242671
+  },
+  {
+   "id": "exhibitB",
+   "name": "Exhibit spot B (example)",
+   "cat": "biennale",
+   "desc": "Example exhibit position on the south lawn.",
+   "note": "Replace with the real installation name, artist and timings.",
+   "pos": "approx",
+   "lat": 28.607789,
+   "lng": 77.245261
+  }
+ ]
+}

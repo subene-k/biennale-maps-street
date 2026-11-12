@@ -1,0 +1,231 @@
+{
+ "version": 2,
+ "updated": "2026-11-12",
+ "coords": "WGS84 lat/lng (OpenStreetMap where pos=osm, otherwise approximate)",
+ "pois": [
+  {
+   "id": "entry",
+   "name": "Entry plaza & Biennale Pass check",
+   "cat": "facility",
+   "desc": "Security check and pass scanning outside Lahori Gate. The Biennale Pass covers entry to the fort, so no separate monument ticket is needed.",
+   "note": "",
+   "icon": "ticket",
+   "pos": "approx",
+   "lat": 28.655534,
+   "lng": 77.238353
+  },
+  {
+   "id": "lahori",
+   "name": "Lahori Gate",
+   "cat": "gate",
+   "desc": "Main entrance on the west wall, facing Lahore. The Prime Minister addresses the nation from its ramparts every Independence Day.",
+   "note": "",
+   "pos": "osm",
+   "lat": 28.65584,
+   "lng": 77.238722
+  },
+  {
+   "id": "chhatta",
+   "name": "Chhatta Chowk",
+   "cat": "monument",
+   "desc": "Covered bazaar arcade just inside Lahori Gate, once the royal Meena Bazaar. Craft shops still line both sides.",
+   "note": "",
+   "pos": "osm",
+   "lat": 28.655878,
+   "lng": 77.239329
+  },
+  {
+   "id": "naubat",
+   "name": "Naubat Khana",
+   "cat": "museum",
+   "desc": "The drum house, where court musicians played for the emperor. The upper floor holds the Indian War Memorial Museum.",
+   "note": "",
+   "pos": "osm",
+   "lat": 28.655726,
+   "lng": 77.240988
+  },
+  {
+   "id": "diwaniam",
+   "name": "Diwan-i-Aam",
+   "cat": "monument",
+   "desc": "Hall of Public Audience. Red sandstone arcades frame the marble throne canopy where the emperor heard petitions.",
+   "note": "",
+   "pos": "osm",
+   "lat": 28.655669,
+   "lng": 77.242322
+  },
+  {
+   "id": "mumtaz",
+   "name": "Mumtaz Mahal",
+   "cat": "museum",
+   "desc": "Southernmost of the riverside palaces. It now houses a museum.",
+   "note": "",
+   "pos": "osm",
+   "lat": 28.654524,
+   "lng": 77.243423
+  },
+  {
+   "id": "rang",
+   "name": "Rang Mahal",
+   "cat": "monument",
+   "desc": "Palace of Colours. The Nahr-i-Bihisht water channel flowed through it into a carved marble lotus basin.",
+   "note": "",
+   "pos": "osm",
+   "lat": 28.65568,
+   "lng": 77.243528
+  },
+  {
+   "id": "khas",
+   "name": "Khas Mahal",
+   "cat": "monument",
+   "desc": "The emperor's private chambers, with the Muthamman Burj tower where he appeared to people gathered by the river.",
+   "note": "",
+   "pos": "osm",
+   "lat": 28.656122,
+   "lng": 77.243598
+  },
+  {
+   "id": "diwanikhas",
+   "name": "Diwan-i-Khas",
+   "cat": "monument",
+   "desc": "Hall of Private Audience in white marble, once home to the Peacock Throne.",
+   "note": "",
+   "pos": "osm",
+   "lat": 28.656478,
+   "lng": 77.243403
+  },
+  {
+   "id": "hammam",
+   "name": "Hammam",
+   "cat": "monument",
+   "desc": "The royal baths, with marble floors and inlaid fountains.",
+   "note": "",
+   "pos": "osm",
+   "lat": 28.656837,
+   "lng": 77.243512
+  },
+  {
+   "id": "moti",
+   "name": "Moti Masjid",
+   "cat": "monument",
+   "desc": "Small white marble mosque built by Aurangzeb in 1659 for his private use.",
+   "note": "",
+   "pos": "osm",
+   "lat": 28.656848,
+   "lng": 77.243142
+  },
+  {
+   "id": "hayat",
+   "name": "Hayat Bakhsh Bagh",
+   "cat": "garden",
+   "desc": "The Life-Giving Garden: a Mughal charbagh with water channels, flanked by the Sawan and Bhadon pavilions.",
+   "note": "",
+   "pos": "osm",
+   "lat": 28.657761,
+   "lng": 77.242937
+  },
+  {
+   "id": "zafar",
+   "name": "Zafar Mahal",
+   "cat": "monument",
+   "desc": "Red sandstone pavilion in the garden tank, added by Bahadur Shah Zafar in 1842.",
+   "note": "",
+   "pos": "osm",
+   "lat": 28.657782,
+   "lng": 77.242638
+  },
+  {
+   "id": "shahburj",
+   "name": "Shah Burj",
+   "cat": "monument",
+   "desc": "Tower at the north-east corner where the Nahr-i-Bihisht channel entered the palace complex.",
+   "note": "",
+   "pos": "osm",
+   "lat": 28.658496,
+   "lng": 77.243723
+  },
+  {
+   "id": "baoli",
+   "name": "Baoli (stepwell)",
+   "cat": "monument",
+   "desc": "Stepwell that descends in stages to the water level.",
+   "note": "",
+   "pos": "osm",
+   "lat": 28.659017,
+   "lng": 77.240867
+  },
+  {
+   "id": "kranti",
+   "name": "Kranti Mandir museums",
+   "cat": "museum",
+   "desc": "British-era barracks now used as museums on India's freedom struggle, including the Subhas Chandra Bose and INA Museum.",
+   "note": "",
+   "pos": "approx",
+   "lat": 28.65775,
+   "lng": 77.24195
+  },
+  {
+   "id": "delhi",
+   "name": "Delhi Gate",
+   "cat": "gate",
+   "desc": "Southern gate of the fort, flanked by two life-size stone elephants.",
+   "note": "",
+   "pos": "osm",
+   "lat": 28.652229,
+   "lng": 77.240165
+  },
+  {
+   "id": "infodesk",
+   "name": "Biennale info desk (example)",
+   "cat": "facility",
+   "desc": "Example point. Edit or delete it in Manage.",
+   "note": "Maps, programme guides and help with the Biennale app.",
+   "icon": "info",
+   "pos": "approx",
+   "lat": 28.655379,
+   "lng": 77.239288
+  },
+  {
+   "id": "toilets",
+   "name": "Toilets (approximate)",
+   "cat": "facility",
+   "desc": "Approximate location. Confirm on site and adjust in Manage.",
+   "note": "",
+   "icon": "toilet",
+   "pos": "approx",
+   "lat": 28.65534,
+   "lng": 77.2399
+  },
+  {
+   "id": "cafe",
+   "name": "Cafe (approximate)",
+   "cat": "facility",
+   "desc": "Approximate location. Confirm on site and adjust in Manage.",
+   "note": "",
+   "icon": "cafe",
+   "pos": "approx",
+   "lat": 28.654933,
+   "lng": 77.24134
+  },
+  {
+   "id": "exhibitA",
+   "name": "Exhibit spot A (example)",
+   "cat": "biennale",
+   "desc": "Example exhibit position on the lawn south of Diwan-i-Aam.",
+   "note": "Replace with the real installation name, artist and timings.",
+   "pos": "approx",
+   "lat": 28.654838,
+   "lng": 77.242069
+  },
+  {
+   "id": "exhibitB",
+   "name": "Exhibit spot B (example)",
+   "cat": "biennale",
+   "desc": "Example exhibit position near the garden.",
+   "note": "Replace with the real installation name, artist and timings.",
+   "pos": "approx",
+   "lat": 28.657724,
+   "lng": 77.2414
+  }
+ ]
+}
