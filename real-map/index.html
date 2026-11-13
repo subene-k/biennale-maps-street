@@ -18,7 +18,7 @@
 :root{
   --bg:#E8ECEF; --panel:#FFFFFF; --panel-2:#F3F4F5; --fg:#1D1B1A; --muted:#625E5A; --line:#DDDAD6;
   --accent:#AE3820; --accent-fg:#FFFFFF; --route:#1659C7; --ok:#2C7F45; --warn:#A35F00;
-  --c-gate:#AE3820; --c-monument:#946000; --c-museum:#6A4CC0; --c-garden:#2C7F45; --c-biennale:#C8175F; --c-facility:#4C5B69;
+  --c-event:#D9480F; --c-gate:#AE3820; --c-monument:#946000; --c-museum:#6A4CC0; --c-garden:#2C7F45; --c-biennale:#C8175F; --c-facility:#4C5B69;
   --shadow:0 10px 30px rgba(18,22,26,.18);
   --f-display:"Bricolage Grotesque","Inter",system-ui,sans-serif;
   --f-body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
@@ -84,6 +84,49 @@ button{cursor:pointer}
 .vchip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--vc)}
 .mapproblem ul{margin:6px 0;padding-left:18px}.mapproblem{position:absolute;left:50%;top:50%;transform:translate(-20%,-50%);z-index:9;background:var(--panel);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;max-width:380px;font-size:13px}
 @media (max-width:760px){.mapproblem{transform:translate(-50%,-90%)}}
+/* exhibit numbers, visited state, hidden staff points, legend */
+.pin .num{position:absolute;left:50%;top:-16px;transform:translateX(-50%);background:var(--fg);color:var(--panel);font:600 10px/16px var(--f-mono);padding:0 5px;border-radius:8px;white-space:nowrap}
+.pin.visited .dot{filter:saturate(.35) brightness(1.05)}
+.pin.visited::after{content:'✓';position:absolute;left:-8px;top:-8px;width:18px;height:18px;border-radius:50%;background:var(--ok);color:#fff;font:700 11px/18px var(--f-body);text-align:center;border:2px solid var(--panel)}
+.pin.hiddenpt{display:none}.managing .pin.hiddenpt{display:block;opacity:.6}
+.numb{font:600 11px var(--f-mono);background:var(--fg);color:var(--panel);padding:1px 5px;border-radius:6px}.numb.big{font-size:13px;padding:3px 8px}
+.vtick{color:var(--ok);font-weight:700}
+.artist{font-weight:600;margin:2px 0 6px}.artist span{font-weight:500;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.04em;margin-right:4px}
+.gallery{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory}.gallery img{flex:0 0 100%;scroll-snap-align:start;max-height:240px;object-fit:cover}
+.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:8px 2px 0}.legend span{display:flex;align-items:center;gap:5px}.legend em{font-style:normal}
+.lg{width:14px;height:14px;border-radius:50% 50% 50% 2px;transform:rotate(-45deg);display:inline-grid;place-items:center;font-style:normal;font-size:9px;color:#fff}
+.lg.sel{background:var(--c-biennale);outline:2px solid var(--fg)}.lg.vis{background:var(--ok)}.lg.vis{transform:none;border-radius:50%}.lg.new{background:var(--c-biennale)}
+.here{display:flex;flex-direction:column;align-items:center;gap:4px;pointer-events:none}.here b{background:var(--route);color:#fff;font:600 12px var(--f-body);padding:3px 8px;border-radius:8px;box-shadow:var(--shadow)}
+:root{--c-event:#D9480F}
+/* ---------- kiosk ---------- */
+.kiosk{font-size:17px;user-select:none;-webkit-user-select:none;touch-action:manipulation}
+.kiosk .nokiosk{display:none!important}
+.kiosk .panel{width:460px}.kiosk .topbar{left:484px}
+.kiosk .btn,.kiosk .tbtn,.kiosk .seg button,.kiosk .pbtn{min-height:52px;font-size:16px;padding:10px 16px}
+.kiosk .tabs button{font-size:18px;padding:14px 14px}
+.kiosk .list li button{padding:13px 8px}.kiosk .list .t{font-size:17px}
+.kiosk .search{padding:14px 16px;font-size:17px}.kiosk .chip{padding:9px 14px;font-size:14px}
+.kiosk .pin{width:40px;height:40px}.kiosk .pin .dot svg{width:20px;height:20px}.kiosk .pin .lbl{font-size:14px}
+.kiosk .detail h2{font-size:28px}.kiosk .player{width:min(720px,calc(100% - 520px))}
+.kiosk .maplibregl-ctrl-group button{width:52px!important;height:52px!important}
+.welcome{position:absolute;inset:0;z-index:40;display:grid;grid-template-rows:auto 1fr auto;color:#fff;background:linear-gradient(180deg,rgba(20,10,6,.55),rgba(20,10,6,.15) 40%,rgba(20,10,6,.75));padding:32px 48px}
+.wl-bg{position:absolute;inset:0;z-index:-1}.wl-bg.img{background-size:cover;background-position:center}
+.wl-top{display:flex;justify-content:flex-end}
+.wl-main{align-self:center;max-width:900px}
+.wl-kicker{font:600 20px var(--f-body);letter-spacing:.12em;text-transform:uppercase;opacity:.9;margin:0}
+.welcome h1{font:700 clamp(56px,9vw,128px)/1 var(--f-display);margin:8px 0}
+.wl-sub{font-size:24px;margin:0 0 28px;opacity:.95}
+.wl-go{border:0;border-radius:20px;background:var(--accent);color:#fff;font:700 30px var(--f-display);padding:24px 44px;box-shadow:0 12px 40px rgba(0,0,0,.35)}
+.wl-count{font-size:18px;opacity:.85}
+.wl-bottom{display:flex;gap:28px;align-items:flex-end;justify-content:space-between}
+.wl-hl h3{font:600 18px var(--f-body);margin:0 0 10px;text-transform:uppercase;letter-spacing:.08em}
+.wl-cards{display:flex;gap:12px;flex-wrap:wrap}
+.wl-card{display:flex;gap:10px;align-items:center;text-align:left;border:0;border-radius:16px;background:rgba(255,255,255,.94);color:#1d1b1a;padding:12px 16px;min-width:220px;font-size:16px}
+.wl-card small{display:block;color:#625e5a;font-size:13px}
+.wl-qr{background:#fff;color:#1d1b1a;border-radius:16px;padding:12px;width:190px;text-align:center;font-size:13px;font-weight:600}
+.wl-qr #qr svg{width:160px;height:160px;display:block;margin:0 auto 6px}
+.welcoming .panel,.welcoming .topbar,.welcoming .maplibregl-ctrl-top-right,.welcoming .maplibregl-marker,.welcoming .player,.welcoming .mapproblem{visibility:hidden}
+@media (max-width:760px){.welcome{padding:20px}.wl-bottom{flex-direction:column;align-items:stretch}.wl-qr{display:none}.wl-go{font-size:22px;padding:18px 28px}}
 /* walker figure */
 .walker{width:44px;height:64px;pointer-events:none}
 .walker svg{width:100%;height:100%;overflow:visible}
@@ -254,8 +297,9 @@ label.f{display:block;font-size:12px;font-weight:600;color:var(--muted);margin:1
       <button data-style="sat" aria-pressed="false" title="Satellite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3.5 9h17M3.5 15h17M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg><span class="tx">Satellite</span></button>
     </div>
     <button class="tbtn" id="b3d" aria-pressed="true" title="Tilt for 3D buildings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3 3 7.5v9L12 21l9-4.5v-9z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg><span class="tx">3D</span></button>
-    <button class="tbtn" id="bSV" aria-pressed="false" title="Street View: tap a spot on the map"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="4.5" r="2.5"/><path d="M9 8h6l1 7h-2.5l-.7 7h-1.6l-.7-7H8z"/></svg><span class="tx">Street View</span></button>
+    <button class="tbtn nokiosk" id="bSV" aria-pressed="false" title="Street View: tap a spot on the map"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="4.5" r="2.5"/><path d="M9 8h6l1 7h-2.5l-.7 7h-1.6l-.7-7H8z"/></svg><span class="tx">Street View</span></button>
     <button class="tbtn" id="bLive" aria-pressed="true" title="Live scene: visitors, boats and traffic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="7" cy="6" r="2"/><path d="M7 9v6l-2 5M7 15l2 5M15 13l3 3 3-3M18 16V6"/></svg><span class="tx">Live</span></button>
+    <button class="tbtn" id="bLang" title="English / हिन्दी" style="font-weight:700;min-width:46px">हिं</button>
     <button class="tbtn" id="bTheme" title="Light or dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></button>
   </div>
 
@@ -268,27 +312,28 @@ label.f{display:block;font-size:12px;font-weight:600;color:var(--muted);margin:1
       </div>
     </div>
     <div class="tabs" role="tablist">
-      <button role="tab" data-tab="explore" aria-selected="true">Explore</button>
-      <button role="tab" data-tab="route" aria-selected="false">Directions</button>
+      <button role="tab" data-tab="explore" aria-selected="true" data-i18n="explore">Explore</button>
+      <button role="tab" data-tab="route" aria-selected="false" data-i18n="directions">Directions</button>
       <button role="tab" data-tab="manage" aria-selected="false" id="tabManage" hidden>Manage</button>
     </div>
     <div class="pbody" id="pbody">
       <section id="vExplore">
-        <input class="search" id="q" type="search" placeholder="Search places" aria-label="Search places">
+        <input class="search" id="q" type="search" placeholder="Search places" data-i18n-ph="search" aria-label="Search places">
+        <div class="legend"><span><i class="lg sel"></i><em data-i18n="selected">Selected</em></span><span><i class="lg vis">✓</i><em data-i18n="visited">Visited</em></span><span><i class="lg new"></i><em data-i18n="notVisited">Not yet visited</em></span></div>
         <div class="chips" id="chips"></div>
         <div id="list"></div>
       </section>
       <section id="vDetail" class="detail" hidden></section>
       <section id="vRoute" hidden>
-        <p class="small muted" style="margin:0 0 6px">Tap pins or add stops. Routes follow real walkways from OpenStreetMap.</p>
-        <button class="btn blue" id="meBtn" style="width:100%;margin:4px 0 6px">📍 Start from my location</button>
+        <p class="small muted" style="margin:0 0 6px" data-i18n="routeIntro">Tap pins or add stops. Routes follow real walkways.</p>
+        <button class="btn blue" id="meBtn" style="width:100%;margin:4px 0 6px" data-i18n="startMe">📍 Start from my location</button>
         <ol class="stops" id="stops"></ol>
-        <div class="row"><select id="addSel" aria-label="Add a stop" style="flex:1"></select><button class="btn" id="addBtn">Add stop</button></div>
-        <label class="check"><input type="checkbox" id="keepLast"> Keep my last stop last</label>
+        <div class="row"><select id="addSel" aria-label="Add a stop" style="flex:1"></select><button class="btn" id="addBtn" data-i18n="addStop">Add stop</button></div>
+        <label class="check"><input type="checkbox" id="keepLast"> <span data-i18n="keepLast">Keep my last stop last</span></label>
         <div class="row" style="margin-top:6px">
-          <button class="btn" id="optBtn">Find the shortest order</button>
-          <button class="btn" id="allBtn">Visit every place</button>
-          <button class="btn" id="clearBtn">Clear</button>
+          <button class="btn" id="optBtn" data-i18n="optimize">Find the shortest order</button>
+          <button class="btn" id="allBtn" data-i18n="visitAll">Visit every place</button>
+          <button class="btn" id="clearBtn" data-i18n="clear">Reset route</button>
         </div>
         <div id="routeOut"></div>
       </section>
@@ -302,14 +347,14 @@ label.f{display:block;font-size:12px;font-weight:600;color:var(--muted);margin:1
       <div class="now"><b id="plName">Guided walk</b><span id="plSub"></span></div>
       <button class="pbtn" id="plSkip" title="Skip to next stop" aria-label="Skip to next stop"></button>
       <button class="pbtn" id="plSound"></button>
-      <button class="pbtn end" id="plEnd">End walk</button>
+      <button class="pbtn end" id="plEnd" data-i18n="endWalk">End walk</button>
     </div>
     <div class="prog"><i id="plProg"></i></div>
     <div class="row" style="justify-content:space-between">
       <div class="seg viewseg" id="walkView" role="group" aria-label="Walk view">
-        <button data-v="map" aria-pressed="false">Map</button>
-        <button data-v="follow" aria-pressed="true">Follow</button>
-        <button data-v="eyes" aria-pressed="false">Walker’s eyes</button>
+        <button data-v="map" aria-pressed="false" data-i18n="vMap">Map</button>
+        <button data-v="follow" aria-pressed="true" data-i18n="vFollow">Follow</button>
+        <button data-v="eyes" aria-pressed="false" data-i18n="vEyes">Walker’s eyes</button>
       </div>
       <span class="vstatus" id="plVoice"></span>
     </div>
@@ -340,10 +385,25 @@ label.f{display:block;font-size:12px;font-weight:600;color:var(--muted);margin:1
     <div class="bar"><span class="btn" id="panoTitle"></span><button class="btn pri" id="panoClose">Back to map</button></div>
   </div>
 
+  <div class="welcome" id="welcome" hidden>
+    <div class="wl-bg" id="wlBg"></div>
+    <div class="wl-top"><div class="seg"><button class="langbtn" data-lang="en">English</button><button class="langbtn" data-lang="hi">हिन्दी</button></div></div>
+    <div class="wl-main">
+      <p class="wl-kicker">The India Biennale 2026</p>
+      <h1 data-i18n="welcomeTitle">Purana Qila</h1>
+      <p class="wl-sub" data-i18n="welcomeSub">Explore the exhibition</p>
+      <button class="wl-go" id="wlGo"><span data-i18n="exploreBtn">Explore the Biennale</span> →</button>
+      <p class="wl-count" id="wlCount"></p>
+    </div>
+    <div class="wl-bottom">
+      <div class="wl-hl"><h3 data-i18n="highlights">Exhibition highlights</h3><div class="wl-cards" id="wlCards"></div></div>
+      <div class="wl-qr"><div id="qr"></div><span data-i18n="scan">Scan to take the map on your phone</span></div>
+    </div>
+  </div>
   <div class="toast" id="toast" hidden role="status"></div>
 </div>
 <script type="application/json" id="data-rf">{"version":2,"updated":"2026-11-12","coords":"WGS84 lat/lng (OpenStreetMap where pos=osm, otherwise approximate)","pois":[{"id":"entry","name":"Entry plaza & Biennale Pass check","cat":"facility","desc":"Security check and pass scanning outside Lahori Gate. The Biennale Pass covers entry to the fort, so no separate monument ticket is needed.","note":"","icon":"ticket","pos":"approx","lat":28.655534,"lng":77.238353},{"id":"lahori","name":"Lahori Gate","cat":"gate","desc":"Main entrance on the west wall, facing Lahore. The Prime Minister addresses the nation from its ramparts every Independence Day.","note":"","pos":"osm","lat":28.65584,"lng":77.238722},{"id":"chhatta","name":"Chhatta Chowk","cat":"monument","desc":"Covered bazaar arcade just inside Lahori Gate, once the royal Meena Bazaar. Craft shops still line both sides.","note":"","pos":"osm","lat":28.655878,"lng":77.239329},{"id":"naubat","name":"Naubat Khana","cat":"museum","desc":"The drum house, where court musicians played for the emperor. The upper floor holds the Indian War Memorial Museum.","note":"","pos":"osm","lat":28.655726,"lng":77.240988},{"id":"diwaniam","name":"Diwan-i-Aam","cat":"monument","desc":"Hall of Public Audience. Red sandstone arcades frame the marble throne canopy where the emperor heard petitions.","note":"","pos":"osm","lat":28.655669,"lng":77.242322},{"id":"mumtaz","name":"Mumtaz Mahal","cat":"museum","desc":"Southernmost of the riverside palaces. It now houses a museum.","note":"","pos":"osm","lat":28.654524,"lng":77.243423},{"id":"rang","name":"Rang Mahal","cat":"monument","desc":"Palace of Colours. The Nahr-i-Bihisht water channel flowed through it into a carved marble lotus basin.","note":"","pos":"osm","lat":28.65568,"lng":77.243528},{"id":"khas","name":"Khas Mahal","cat":"monument","desc":"The emperor's private chambers, with the Muthamman Burj tower where he appeared to people gathered by the river.","note":"","pos":"osm","lat":28.656122,"lng":77.243598},{"id":"diwanikhas","name":"Diwan-i-Khas","cat":"monument","desc":"Hall of Private Audience in white marble, once home to the Peacock Throne.","note":"","pos":"osm","lat":28.656478,"lng":77.243403},{"id":"hammam","name":"Hammam","cat":"monument","desc":"The royal baths, with marble floors and inlaid fountains.","note":"","pos":"osm","lat":28.656837,"lng":77.243512},{"id":"moti","name":"Moti Masjid","cat":"monument","desc":"Small white marble mosque built by Aurangzeb in 1659 for his private use.","note":"","pos":"osm","lat":28.656848,"lng":77.243142},{"id":"hayat","name":"Hayat Bakhsh Bagh","cat":"garden","desc":"The Life-Giving Garden: a Mughal charbagh with water channels, flanked by the Sawan and Bhadon pavilions.","note":"","pos":"osm","lat":28.657761,"lng":77.242937},{"id":"zafar","name":"Zafar Mahal","cat":"monument","desc":"Red sandstone pavilion in the garden tank, added by Bahadur Shah Zafar in 1842.","note":"","pos":"osm","lat":28.657782,"lng":77.242638},{"id":"shahburj","name":"Shah Burj","cat":"monument","desc":"Tower at the north-east corner where the Nahr-i-Bihisht channel entered the palace complex.","note":"","pos":"osm","lat":28.658496,"lng":77.243723},{"id":"baoli","name":"Baoli (stepwell)","cat":"monument","desc":"Stepwell that descends in stages to the water level.","note":"","pos":"osm","lat":28.659017,"lng":77.240867},{"id":"kranti","name":"Kranti Mandir museums","cat":"museum","desc":"British-era barracks now used as museums on India's freedom struggle, including the Subhas Chandra Bose and INA Museum.","note":"","pos":"approx","lat":28.65775,"lng":77.24195},{"id":"delhi","name":"Delhi Gate","cat":"gate","desc":"Southern gate of the fort, flanked by two life-size stone elephants.","note":"","pos":"osm","lat":28.652229,"lng":77.240165},{"id":"infodesk","name":"Biennale info desk (example)","cat":"facility","desc":"Example point. Edit or delete it in Manage.","note":"Maps, programme guides and help with the Biennale app.","icon":"info","pos":"approx","lat":28.655379,"lng":77.239288},{"id":"toilets","name":"Toilets (approximate)","cat":"facility","desc":"Approximate location. Confirm on site and adjust in Manage.","note":"","icon":"toilet","pos":"approx","lat":28.65534,"lng":77.2399},{"id":"cafe","name":"Cafe (approximate)","cat":"facility","desc":"Approximate location. Confirm on site and adjust in Manage.","note":"","icon":"cafe","pos":"approx","lat":28.654933,"lng":77.24134},{"id":"exhibitA","name":"Exhibit spot A (example)","cat":"biennale","desc":"Example exhibit position on the lawn south of Diwan-i-Aam.","note":"Replace with the real installation name, artist and timings.","pos":"approx","lat":28.654838,"lng":77.242069},{"id":"exhibitB","name":"Exhibit spot B (example)","cat":"biennale","desc":"Example exhibit position near the garden.","note":"Replace with the real installation name, artist and timings.","pos":"approx","lat":28.657724,"lng":77.2414}]}</script>
-<script type="application/json" id="data-pq">{"version":2,"updated":"2026-11-12","coords":"WGS84 lat/lng (OpenStreetMap where pos=osm, otherwise approximate)","pois":[{"id":"entry","name":"Entry & Biennale Pass check","cat":"facility","icon":"ticket","desc":"Pass scanning outside Bara Darwaza, by the lake. The Biennale Pass covers entry to the fort, so no separate monument ticket is needed.","note":"","pos":"approx","lat":28.60872,"lng":77.2419},{"id":"bara","name":"Bara Darwaza","cat":"gate","desc":"The main western gateway in red sandstone, flanked by massive bastions and topped with domed kiosks. It looks out over the lake.","note":"","pos":"osm","lat":28.608863,"lng":77.242318},{"id":"humayun","name":"Humayun Darwaza","cat":"gate","desc":"The southern gate, named after the Mughal emperor Humayun.","note":"","pos":"osm","lat":28.606881,"lng":77.245388},{"id":"talaqi","name":"Talaqi Darwaza","cat":"gate","desc":"The northern gate, often called the Forbidden Gate.","note":"","pos":"osm","lat":28.611714,"lng":77.241629},{"id":"mosque","name":"Qila-i-Kuhna Mosque","cat":"monument","desc":"Built by Sher Shah Suri in 1541, this single-domed mosque has a prayer hall with five arched bays in red sandstone, with marble and slate inlay.","note":"","pos":"osm","lat":28.609745,"lng":77.244816},{"id":"shermandal","name":"Sher Mandal","cat":"monument","desc":"A two-storey octagonal tower of red sandstone. Humayun used it as a library and died in 1556 after a fall on its stairs.","note":"","pos":"osm","lat":28.608658,"lng":77.24506},{"id":"baoli","name":"Baoli (stepwell)","cat":"monument","desc":"A stepwell that descends in stages to the water.","note":"","pos":"osm","lat":28.609224,"lng":77.244301},{"id":"museum","name":"Archaeological Site Museum","cat":"museum","desc":"Objects found in excavations at the fort, from pottery to coins.","note":"","pos":"osm","lat":28.608753,"lng":77.242454},{"id":"excavation","name":"Excavation site","cat":"monument","icon":"dig","desc":"Excavated trenches showing layers of settlement across many centuries. Tradition links the site with Indraprastha of the Mahabharata.","note":"","pos":"approx","lat":28.607843,"lng":77.246058},{"id":"lake","name":"Purana Qila lake","cat":"garden","icon":"boat","desc":"The lake along the west side of the fort, with boating.","note":"","pos":"approx","lat":28.6099,"lng":77.24085},{"id":"infodesk","name":"Biennale info desk (example)","cat":"facility","icon":"info","desc":"Example point. Edit or delete it in Manage.","note":"Maps, programme guides and help with the Biennale app.","pos":"approx","lat":28.609376,"lng":77.242397},{"id":"toilets","name":"Toilets (approximate)","cat":"facility","icon":"toilet","desc":"Public toilets near the lake and entrance, as mapped on OpenStreetMap. Confirm on site.","note":"","pos":"osm","lat":28.608233,"lng":77.240555},{"id":"cafe","name":"Cafe (approximate)","cat":"facility","icon":"cafe","desc":"Approximate location. Confirm on site and adjust in Manage.","note":"","pos":"approx","lat":28.609424,"lng":77.242919},{"id":"parking","name":"Parking (approximate)","cat":"facility","icon":"parking","desc":"Car park near the lake and entrance, as mapped on OpenStreetMap. Confirm on site.","note":"","pos":"osm","lat":28.607986,"lng":77.240582},{"id":"exhibitA","name":"Exhibit spot A (example)","cat":"biennale","desc":"Example exhibit position on the north lawn.","note":"Replace with the real installation name, artist and timings.","pos":"approx","lat":28.61008,"lng":77.242671},{"id":"exhibitB","name":"Exhibit spot B (example)","cat":"biennale","desc":"Example exhibit position on the south lawn.","note":"Replace with the real installation name, artist and timings.","pos":"approx","lat":28.607789,"lng":77.245261}]}</script>
+<script type="application/json" id="data-pq">{"version":2,"updated":"2026-11-13","coords":"WGS84 lat/lng (OpenStreetMap where pos=osm, otherwise approximate)","pois":[{"id":"entry","name":"Entry & Biennale Pass check","cat":"facility","icon":"ticket","desc":"Pass scanning outside Bara Darwaza, by the lake. The Biennale Pass covers entry to the fort, so no separate monument ticket is needed.","note":"","pos":"approx","lat":28.60872,"lng":77.2419,"name_hi":"प्रवेश और बिएनाले पास जाँच","desc_hi":"बड़ा दरवाज़ा के बाहर पास स्कैनिंग, झील के पास। बिएनाले पास से किले में प्रवेश होता है, अलग स्मारक टिकट की ज़रूरत नहीं।"},{"id":"bara","name":"Bara Darwaza","cat":"gate","desc":"The main western gateway in red sandstone, flanked by massive bastions and topped with domed kiosks. It looks out over the lake.","note":"","pos":"osm","lat":28.608863,"lng":77.242318,"name_hi":"बड़ा दरवाज़ा","desc_hi":"लाल बलुआ पत्थर का मुख्य पश्चिमी द्वार, विशाल बुर्जों से घिरा और ऊपर गुंबददार छतरियाँ। यह झील की ओर खुलता है।"},{"id":"humayun","name":"Humayun Darwaza","cat":"gate","desc":"The southern gate, named after the Mughal emperor Humayun.","note":"","pos":"osm","lat":28.606881,"lng":77.245388,"name_hi":"हुमायूँ दरवाज़ा","desc_hi":"दक्षिणी द्वार, मुग़ल बादशाह हुमायूँ के नाम पर।"},{"id":"talaqi","name":"Talaqi Darwaza","cat":"gate","desc":"The northern gate, often called the Forbidden Gate.","note":"","pos":"osm","lat":28.611714,"lng":77.241629,"name_hi":"तलाकी दरवाज़ा","desc_hi":"उत्तरी द्वार, जिसे अक्सर निषिद्ध द्वार कहा जाता है।"},{"id":"mosque","name":"Qila-i-Kuhna Mosque","cat":"monument","desc":"Built by Sher Shah Suri in 1541, this single-domed mosque has a prayer hall with five arched bays in red sandstone, with marble and slate inlay.","note":"","pos":"osm","lat":28.609745,"lng":77.244816,"name_hi":"किला-ए-कुहना मस्जिद","desc_hi":"1541 में शेरशाह सूरी द्वारा बनवाई गई एक गुंबद वाली मस्जिद, जिसके प्रार्थना कक्ष में लाल बलुआ पत्थर के पाँच मेहराबदार हिस्से हैं, संगमरमर और स्लेट की जड़ाई के साथ।","featured":true},{"id":"shermandal","name":"Sher Mandal","cat":"monument","desc":"A two-storey octagonal tower of red sandstone. Humayun used it as a library and died in 1556 after a fall on its stairs.","note":"","pos":"osm","lat":28.608658,"lng":77.24506,"name_hi":"शेर मंडल","desc_hi":"लाल बलुआ पत्थर की दो-मंज़िला अष्टकोणीय मीनार। हुमायूँ इसे पुस्तकालय के रूप में इस्तेमाल करते थे और 1556 में इसकी सीढ़ियों से गिरने के बाद उनकी मृत्यु हुई।","featured":true},{"id":"baoli","name":"Baoli (stepwell)","cat":"monument","desc":"A stepwell that descends in stages to the water.","note":"","pos":"osm","lat":28.609224,"lng":77.244301,"name_hi":"बावली","desc_hi":"एक बावली जो चरणों में पानी तक उतरती है।"},{"id":"museum","name":"ASI Museum (Archaeological Site Museum)","cat":"museum","desc":"Objects found in excavations at the fort, from pottery to coins.","note":"","pos":"client","lat":28.6083742,"lng":77.2429355,"name_hi":"पुरातत्व स्थल संग्रहालय","desc_hi":"किले में हुई खुदाई से मिली वस्तुएँ, मिट्टी के बर्तनों से लेकर सिक्कों तक।"},{"id":"excavation","name":"Excavation site","cat":"monument","icon":"dig","desc":"Excavated trenches showing layers of settlement across many centuries. Tradition links the site with Indraprastha of the Mahabharata.","note":"","pos":"client","lat":28.6091922,"lng":77.2435802,"name_hi":"उत्खनन स्थल","desc_hi":"खुदाई की खाइयाँ जो कई सदियों की बसावट की परतें दिखाती हैं। परंपरा इस स्थान को महाभारत के इंद्रप्रस्थ से जोड़ती है।"},{"id":"lake","name":"Purana Qila lake","cat":"garden","icon":"boat","desc":"The lake along the west side of the fort, with boating.","note":"","pos":"approx","lat":28.6099,"lng":77.24085,"name_hi":"पुराना किला झील","desc_hi":"किले के पश्चिमी ओर की झील, जहाँ नौका विहार होता है।"},{"id":"infodesk","name":"Biennale info desk (example)","cat":"facility","icon":"info","desc":"Example point. Edit or delete it in Manage.","note":"Maps, programme guides and help with the Biennale app.","pos":"approx","lat":28.609376,"lng":77.242397,"name_hi":"बिएनाले सूचना डेस्क (उदाहरण)","desc_hi":"उदाहरण बिंदु। इसे Manage में बदलें या हटाएँ।"},{"id":"toilets","name":"Toilets (approximate)","cat":"facility","icon":"toilet","desc":"Public toilets near the lake and entrance, as mapped on OpenStreetMap. Confirm on site.","note":"","pos":"osm","lat":28.608233,"lng":77.240555,"name_hi":"शौचालय","desc_hi":"झील और प्रवेश के पास सार्वजनिक शौचालय, OpenStreetMap के अनुसार। मौके पर पुष्टि करें।"},{"id":"parking","name":"Parking (approximate)","cat":"facility","icon":"parking","desc":"Car park near the lake and entrance, as mapped on OpenStreetMap. Confirm on site.","note":"","pos":"osm","lat":28.607986,"lng":77.240582,"name_hi":"पार्किंग","desc_hi":"झील और प्रवेश के पास कार पार्क, OpenStreetMap के अनुसार। मौके पर पुष्टि करें।"},{"id":"swiss","num":"E01","name":"Swiss Embassy","name_hi":"स्विस दूतावास","cat":"biennale","artist":"","desc":"Exhibit details to be added: artist, description, photos.","desc_hi":"प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।","note":"","lat":28.6092763,"lng":77.2440627,"pos":"client"},{"id":"audi","num":"E02","name":"Audi","name_hi":"ऑडी","cat":"biennale","artist":"","desc":"Exhibit details to be added: artist, description, photos.","desc_hi":"प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।","note":"","lat":28.6089805,"lng":77.2441247,"pos":"client"},{"id":"rmz","num":"E03","name":"RMZ","name_hi":"RMZ","cat":"biennale","artist":"","desc":"Exhibit details to be added: artist, description, photos.","desc_hi":"प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।","note":"","lat":28.6090114,"lng":77.2449619,"pos":"client"},{"id":"pav","num":"E04","name":"PAV","name_hi":"PAV","cat":"biennale","artist":"","desc":"Exhibit details to be added: artist, description, photos.","desc_hi":"प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।","note":"","lat":28.6093449,"lng":77.245208,"pos":"client"},{"id":"northeast","num":"E05","name":"North East","name_hi":"पूर्वोत्तर","cat":"biennale","artist":"","desc":"Exhibit details to be added: artist, description, photos.","desc_hi":"प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।","note":"","lat":28.6092531,"lng":77.2460499,"pos":"client"},{"id":"serendipity","num":"E06","name":"Serendipity","name_hi":"सेरेन्डिपिटी","cat":"biennale","artist":"","desc":"Exhibit details to be added: artist, description, photos.","desc_hi":"प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।","note":"","lat":28.610406,"lng":77.2441364,"pos":"client","featured":true},{"id":"dag","num":"E07","name":"DAG","name_hi":"DAG","cat":"biennale","artist":"","desc":"Exhibit details to be added: artist, description, photos.","desc_hi":"प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।","note":"","lat":28.6107577,"lng":77.2443859,"pos":"client"},{"id":"pav-pk-sk","num":"E08","name":"PAV · Payal Kapoor + Seema Kohli","name_hi":"PAV · पायल कपूर + सीमा कोहली","cat":"biennale","artist":"Payal Kapoor, Seema Kohli","desc":"Exhibit details to be added: artist, description, photos.","desc_hi":"प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।","note":"","lat":28.6114547,"lng":77.2424607,"pos":"client","featured":true},{"id":"dhoomil","num":"E09","name":"Dhoomil","name_hi":"धूमिल","cat":"biennale","artist":"","desc":"Exhibit details to be added: artist, description, photos.","desc_hi":"प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।","note":"","lat":28.61223,"lng":77.2424624,"pos":"client"},{"id":"ardee","num":"E10","name":"Student pavilion by Ardee","name_hi":"आर्डी द्वारा छात्र मंडप","cat":"biennale","artist":"Ardee","desc":"Exhibit details to be added: artist, description, photos.","desc_hi":"प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।","note":"","lat":28.6120487,"lng":77.2409319,"pos":"client"},{"id":"pav-states","num":"E11","name":"PAV States","name_hi":"PAV राज्य","cat":"biennale","artist":"","desc":"Exhibit details to be added: artist, description, photos.","desc_hi":"प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।","note":"","lat":28.6113953,"lng":77.2420903,"pos":"client","check":"Two positions were given for PAV States; the second list’s position is used."},{"id":"pati","num":"E12","name":"Pati","name_hi":"पाटी","cat":"biennale","artist":"","desc":"Exhibit details to be added: artist, description, photos.","desc_hi":"प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।","note":"","lat":28.6090035,"lng":77.2424611,"pos":"client","check":"Latitude given as 20.6090035; read as 28.6090035."},{"id":"jsw","num":"E13","name":"JSW","name_hi":"JSW","cat":"biennale","artist":"","desc":"Exhibit details to be added: artist, description, photos.","desc_hi":"प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।","note":"","lat":28.6082982,"lng":77.244008,"pos":"client"},{"id":"hungary","num":"E14","name":"Hungary","name_hi":"हंगरी","cat":"biennale","artist":"","desc":"Exhibit details to be added: artist, description, photos.","desc_hi":"प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।","note":"","lat":28.606981,"lng":77.2453387,"pos":"client","check":"Longitude given as 77.4053387 (16 km away); read as 77.2453387. Please confirm."},{"id":"nmacc","num":"E15","name":"NMACC","name_hi":"NMACC","cat":"biennale","artist":"","desc":"Exhibit details to be added: artist, description, photos.","desc_hi":"प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।","note":"","lat":28.6102503,"lng":77.2427873,"pos":"client"},{"id":"knma-moc","num":"E16","name":"KNMA MOC","name_hi":"KNMA MOC","cat":"biennale","artist":"","desc":"Exhibit details to be added: artist, description, photos.","desc_hi":"प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।","note":"","lat":28.6106459,"lng":77.2415055,"pos":"client"},{"id":"knma","num":"E17","name":"KNMA","name_hi":"KNMA","cat":"biennale","artist":"","desc":"Exhibit details to be added: artist, description, photos.","desc_hi":"प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।","note":"","lat":28.6101134,"lng":77.2419122,"pos":"client","featured":true},{"id":"event-shermandal","name":"Event space · Sher Mandal","name_hi":"कार्यक्रम स्थल · शेर मंडल","cat":"event","icon":"stage","desc":"Talks, performances and events. Schedule to be added.","desc_hi":"वार्ता, प्रस्तुतियाँ और कार्यक्रम। कार्यक्रम-सूची जोड़ी जानी है।","note":"","lat":28.6086005,"lng":77.2453431,"pos":"client","featured":true},{"id":"event-tricolour","name":"Event space · behind the Tricolour","name_hi":"कार्यक्रम स्थल · तिरंगे के पीछे","cat":"event","icon":"stage","desc":"Talks, performances and events. Schedule to be added.","desc_hi":"वार्ता, प्रस्तुतियाँ और कार्यक्रम। कार्यक्रम-सूची जोड़ी जानी है।","note":"","lat":28.6099583,"lng":77.24395,"pos":"client"},{"id":"hospitality","name":"Hospitality","name_hi":"आतिथ्य","cat":"facility","icon":"cafe","desc":"","desc_hi":"","note":"","lat":28.6110485,"lng":77.2434699,"pos":"client"},{"id":"hospitality-jsw","name":"Hospitality (near JSW)","name_hi":"आतिथ्य (JSW के पास)","cat":"facility","icon":"cafe","desc":"","desc_hi":"","note":"","lat":28.6074688,"lng":77.2448318,"pos":"client"},{"id":"amenities","name":"Amenities","name_hi":"सुविधाएँ","cat":"facility","icon":"toilet","desc":"","desc_hi":"","note":"","lat":28.6107445,"lng":77.2432436,"pos":"client"},{"id":"skh-vip","name":"SKH + VIP","name_hi":"SKH + VIP","cat":"facility","icon":"info","desc":"","desc_hi":"","note":"","lat":28.6088849,"lng":77.243024,"pos":"client"},{"id":"student-gate","name":"Student Entry Gate","name_hi":"छात्र प्रवेश द्वार","cat":"facility","icon":"exit","desc":"","desc_hi":"","note":"","lat":28.6117538,"lng":77.241991,"pos":"client","check":"“Student entry” (28.6118447, 77.2415521) and “Student Entry Gate” are about 40 m apart; the gate position is used."},{"id":"storage","name":"Storage","name_hi":"भंडार","cat":"facility","icon":"shop","desc":"Staff only. Hidden from visitors.","desc_hi":"","note":"","lat":28.6064985,"lng":77.2445492,"pos":"client","hidden":true}]}</script>
 <script>
 /* Biennale Fort Maps · real map edition.
    Base map: OpenStreetMap data via OpenFreeMap vector tiles (free, no key), drawn with MapLibre GL (BSD-3).
@@ -415,18 +475,19 @@ const ICONS_MAP = {
   exit:'<path d="M3 3h11v4.5h-2.2V5.2H5.2v13.6h6.6v-2.3H14V21H3zm12 4.5 6 4.5-6 4.5v-3.2H8.5v-2.6H15z"/>',
   shop:'<path d="M5 7.5h14l1.2 14H3.8zM8.5 7.5a3.5 3.5 0 0 1 7 0h-2.2a1.3 1.3 0 0 0-2.6 0z"/>',
   photo:'<path fill-rule="evenodd" d="M3 7h3.6L8.6 4h6.8l2 3H21v13H3zm9 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/>',
-  dig:'<path d="M2 20h20v2H2zM3 18v-3h4v-3h4V9h4V6h6v2.4h-3.6v3H13.8v3H9.8v3H5.6V18z"/>'
+  dig:'<path d="M2 20h20v2H2zM3 18v-3h4v-3h4V9h4V6h6v2.4h-3.6v3H13.8v3H9.8v3H5.6V18z"/>',
+  stage:'<path d="M12 2a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3zm-7 9h2a5 5 0 0 0 10 0h2a7 7 0 0 1-6 6.9V21h3v2H8v-2h3v-3.1A7 7 0 0 1 5 11z"/>'
 };
 const ICON_NAMES = {gate:'Gate', dome:'Monument', museum:'Museum', tree:'Garden', spark:'Biennale exhibit', toilet:'Toilets', cafe:'Cafe or food', info:'Information', ticket:'Tickets / pass check',
-  firstaid:'First aid', water:'Drinking water', parking:'Parking', accessible:'Accessible facility', boat:'Boating', exit:'Exit', shop:'Shop', photo:'Photo spot', dig:'Excavation'};
-const CAT_ICON = {gate:'gate', monument:'dome', museum:'museum', garden:'tree', biennale:'spark', facility:'info'};
+  firstaid:'First aid', water:'Drinking water', parking:'Parking', accessible:'Accessible facility', boat:'Boating', exit:'Exit', shop:'Shop', photo:'Photo spot', dig:'Excavation', stage:'Stage / event'};
+const CAT_ICON = {gate:'gate', monument:'dome', museum:'museum', garden:'tree', biennale:'spark', event:'stage', facility:'info'};
 const iconKey = p => (p?.icon && ICONS_MAP[p.icon]) ? p.icon : (CAT_ICON[p?.cat] || 'dome');
 const iconSvg = k => `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">${ICONS_MAP[k] || ICONS_MAP.dome}</svg>`;
 const CATS = {
   gate:{label:'Gates', one:'Gate'}, monument:{label:'Palaces & monuments', one:'Monument'}, museum:{label:'Museums', one:'Museum'},
-  garden:{label:'Gardens', one:'Garden'}, biennale:{label:'Biennale', one:'Biennale exhibit'}, facility:{label:'Visitor services', one:'Visitor service'}
+  garden:{label:'Gardens', one:'Garden'}, biennale:{label:'Biennale exhibits', one:'Biennale exhibit'}, event:{label:'Events', one:'Event'}, facility:{label:'Visitor services', one:'Visitor service'}
 };
-const CAT_ORDER = ['gate','monument','museum','garden','biennale','facility'];
+const CAT_ORDER = ['biennale','event','gate','monument','museum','garden','facility'];
 const UI = {
   up:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 15 6-6 6 6"/></svg>',
   down:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>',
@@ -960,7 +1021,8 @@ function makePin(p){
   const el = document.createElement('div');
   el.className = 'pin' + (p.cat === 'facility' ? ' fac' : '') + ' v-' + p.venue;
   el.style.setProperty('--cat', `var(--c-${p.cat})`);
-  el.innerHTML = `<div class="dot">${iconSvg(iconKey(p))}</div><span class="lbl">${esc(p.name)}</span>`;
+  if(p.hidden) el.classList.add('hiddenpt');
+  el.innerHTML = `<div class="dot">${iconSvg(iconKey(p))}</div>${p.num ? `<span class="num">${esc(p.num)}</span>` : ''}<span class="lbl">${esc(nm(p))}</span>`;
   el.title = p.name; el.setAttribute('role', 'button'); el.tabIndex = 0; el.setAttribute('aria-label', p.name);
   el.addEventListener('click', e => { e.stopPropagation(); onPinTap(p.uid); });
   el.addEventListener('keydown', e => { if(e.key === 'Enter') onPinTap(p.uid); });
@@ -1008,16 +1070,18 @@ function setTab(t){
   $$('.tabs button').forEach(b => b.setAttribute('aria-selected', b.dataset.tab === t));
   $('#vExplore').hidden = t !== 'explore'; $('#vRoute').hidden = t !== 'route'; $('#vManage').hidden = t !== 'manage'; $('#vDetail').hidden = true;
   if(t === 'route'){ renderStops(); planRoute(); }
-  if(t === 'manage') renderManage(); else { addMode = false; moveId = null; }
+  document.body.classList.toggle('managing', t === 'manage');
+  if(t === 'manage') renderManage(); else { addMode = false; moveId = null; settingHere = false; }
+  renderChips(); renderList();
   markers.forEach(m => m.mk.setDraggable(t === 'manage'));
   map && map.getCanvas().classList.toggle('adding', t === 'manage');
 }
-function visiblePois(){ return pois.filter(p => viewBoth || LOCKED_VENUE || p.venue === activeVenue); }
+function visiblePois(){ return pois.filter(p => (viewBoth || LOCKED_VENUE || p.venue === activeVenue) && (!p.hidden || tab === 'manage')); }
 function renderChips(){
   const ch = $('#chips'); ch.innerHTML = '';
   for(const c of CAT_ORDER){ if(!visiblePois().some(p => p.cat === c)) continue;
     const b = document.createElement('button'); b.className = 'chip'; b.style.setProperty('--cat', `var(--c-${c})`);
-    b.innerHTML = `<i></i>${CATS[c].label}`; b.setAttribute('aria-pressed', catFilter === c);
+    b.innerHTML = `<i></i>${catLabel(c)}`; b.setAttribute('aria-pressed', catFilter === c);
     b.onclick = () => { catFilter = catFilter === c ? null : c; renderChips(); renderList(); refreshPinState(); }; ch.appendChild(b); }
 }
 function renderList(){
@@ -1027,17 +1091,17 @@ function renderList(){
     if(vk){ const h = document.createElement('div'); h.className = 'vgrp'; h.style.setProperty('--vc', VCOL[vk]); h.innerHTML = `<i></i>${esc(VENUES[vk].name)}`; box.appendChild(h); }
     for(const c of CAT_ORDER){
       if(catFilter && catFilter !== c) continue;
-      const items = visiblePois().filter(p => (!vk || p.venue === vk) && p.cat === c && (!q || (p.name + ' ' + p.desc).toLowerCase().includes(q)));
+      const items = visiblePois().filter(p => (!vk || p.venue === vk) && p.cat === c && (!q || [p.name, p.name_hi, p.desc, p.num, p.artist].join(' ').toLowerCase().includes(q))).sort((x, y) => (x.num || 'Z').localeCompare(y.num || 'Z'));
       if(!items.length) continue;
-      const h = document.createElement('div'); h.className = 'grp'; h.textContent = CATS[c].label; box.appendChild(h);
+      const h = document.createElement('div'); h.className = 'grp'; h.textContent = catLabel(c); box.appendChild(h);
       const ul = document.createElement('ul'); ul.className = 'list';
       for(const p of items){ const li = document.createElement('li');
-        li.innerHTML = `<button><span class="ico" style="--cat:var(--c-${p.cat})">${iconSvg(iconKey(p))}</span><span><span class="t">${esc(p.name)}</span><br><span class="s">${esc(CATS[p.cat].one)}${p.pos === 'approx' ? ' · approx.' : ''}</span></span></button>`;
+        li.innerHTML = `<button><span class="ico" style="--cat:var(--c-${p.cat})">${iconSvg(iconKey(p))}</span><span><span class="t">${p.num ? `<span class="numb">${esc(p.num)}</span> ` : ''}${esc(nm(p))}${visited.has(p.uid) ? ` <span class="vtick" title="${T('visited')}">✓</span>` : ''}</span><br><span class="s">${p.artist ? esc(p.artist) + ' · ' : ''}${esc(catOne(p.cat))}${p.pos === 'approx' ? ' · ' + T('approxShort') : ''}${p.hidden ? ' · hidden from visitors' : ''}</span></span></button>`;
         li.firstChild.onclick = () => showDetail(p.uid); ul.appendChild(li); }
       box.appendChild(ul);
     }
   }
-  if(!box.querySelector('.list')) box.innerHTML = '<p class="muted">No places match.</p>';
+  if(!box.querySelector('.list')) box.innerHTML = `<p class="muted">${T('noMatch')}</p>`;
 }
 function showDetail(id){
   const p = byId(id); if(!p) return;
@@ -1046,37 +1110,43 @@ function showDetail(id){
   const d = $('#vDetail');
   $('#vExplore').hidden = true; $('#vRoute').hidden = true; d.hidden = false;
   const inStops = stops.includes(id);
+  markVisited(id); track('open_place', { id, name:p.name });
+  const gal = [p.photo, ...(p.gallery || [])].filter(Boolean);
+  const posBadge = p.pos === 'approx' ? `<span class="badge warn">${T('approx')}</span>` : p.pos === 'client' ? `<span class="badge">${T('posClient')}</span>` : `<span class="badge">${T('posOsm')}</span>`;
   d.innerHTML = `
-    <button class="back" id="dBack">${UI.back} ${tab === 'route' ? 'Directions' : 'All places'}</button>
+    <button class="back" id="dBack">${UI.back} ${tab === 'route' ? T('directions') : T('allPlaces')}</button>
     <div class="row" style="margin-top:10px"><span class="ico" style="--cat:var(--c-${p.cat})">${iconSvg(iconKey(p))}</span>
-      <span class="badge">${esc(CATS[p.cat].one)}</span>${p.pos === 'approx' ? '<span class="badge warn">approximate position</span>' : '<span class="badge">position from OpenStreetMap</span>'}</div>
-    <h2>${esc(p.name)}</h2>
-    <div class="vchip" style="--vc:${VCOL[p.venue]}"><i></i>${esc(venueOf(p).name)}</div>
-    ${p.photo ? `<img class="photo" src="${esc(p.photo)}" alt="${esc(p.name)}">` : ''}
-    <p>${esc(p.desc)}</p>
-    ${p.note ? `<div class="note"><b>At the Biennale</b>${esc(p.note)}</div>` : ''}
+      ${p.num ? `<span class="numb big">${esc(p.num)}</span>` : ''}<span class="badge">${esc(catOne(p.cat))}</span>${posBadge}</div>
+    <h2>${esc(nm(p))}</h2>
+    ${p.artist ? `<div class="artist"><span>${T('artist')}</span> ${esc(p.artist)}</div>` : ''}
+    <div class="vchip" style="--vc:${VCOL[p.venue]}"><i></i>${esc(lang === 'hi' ? (VENUE_HI[p.venue] || venueOf(p).name) : venueOf(p).name)}</div>
+    ${gal.length ? `<div class="gallery">${gal.map(g => `<img class="photo" src="${esc(g)}" alt="${esc(nm(p))}" loading="lazy">`).join('')}</div>` : ''}
+    ${p.video ? (/\.(mp4|webm)(\?|$)/i.test(p.video) ? `<video class="photo" src="${esc(p.video)}" controls playsinline preload="metadata"></video>` : `<p><a href="${esc(p.video)}" target="_blank" rel="noopener">▶ ${T('video')}</a></p>`) : ''}
+    <p>${esc(ds(p))}</p>
+    ${nt(p) ? `<div class="note"><b>${T('atBiennale')}</b>${esc(nt(p))}</div>` : ''}
     <div class="acts">
-      <button class="btn blue" id="dGo">Directions here</button>
-      <button class="btn" id="dStop">${inStops ? 'Remove stop' : 'Add stop'}</button>
-      <button class="btn" id="dEye">Look around (eye level)</button>
-      <button class="btn" id="dSV">Street View</button>
-      ${isGate(p) ? '<button class="btn pri" id="dGate" style="grid-column:1/-1">Walk through the gate</button>' : ''}
-      ${p.pano ? '<button class="btn pri" id="dPano" style="grid-column:1/-1">Step inside · 360° photo</button>' : ''}
+      <button class="btn blue" id="dGo">${T('dirHere')}</button>
+      <button class="btn" id="dStop">${inStops ? T('removeStop') : T('addStop')}</button>
+      <button class="btn" id="dEye">${T('lookAround')}</button>
+      <button class="btn nokiosk" id="dSV">Street View</button>
+      ${isGate(p) ? `<button class="btn pri" id="dGate" style="grid-column:1/-1">${T('walkGate')}</button>` : ''}
+      ${p.pano ? `<button class="btn pri" id="dPano" style="grid-column:1/-1">${T('stepInside')}</button>` : ''}
     </div>
-    <p class="small muted" style="margin-top:12px">Street View opens Google Maps at this spot in a new tab. <a href="${mapillaryUrl(p.ll)}" target="_blank" rel="noopener">Mapillary photos</a> · <a href="https://www.openstreetmap.org/?mlat=${p.lat}&mlon=${p.lng}#map=19/${p.lat}/${p.lng}" target="_blank" rel="noopener">OpenStreetMap</a></p>`;
+    <p class="small muted nokiosk" style="margin-top:12px">Street View opens Google Maps at this spot in a new tab. <a href="${mapillaryUrl(p.ll)}" target="_blank" rel="noopener">Mapillary photos</a> · <a href="https://www.openstreetmap.org/?mlat=${p.lat}&mlon=${p.lng}#map=19/${p.lat}/${p.lng}" target="_blank" rel="noopener">OpenStreetMap</a></p>`;
   $('#dBack').onclick = () => { selected = null; refreshPinState(); d.hidden = true; if(tab === 'route') $('#vRoute').hidden = false; else $('#vExplore').hidden = false; };
   $('#dGo').onclick = () => directionsTo(id);
   $('#dStop').onclick = () => { if(stops.includes(id)) stops = stops.filter(s => s !== id); else stops.push(id); renderStops(); planRoute(); showDetail(id); };
-  $('#dEye').onclick = () => enterEye(p);
+  $('#dEye').onclick = () => { track('eye', { id }); enterEye(p); };
   $('#dSV').onclick = () => openStreetView(p.ll, bearingDeg(viewpointFor(p), p.ll));
   if($('#dGate')) $('#dGate').onclick = () => walkThroughGate(p);
-  if($('#dPano')) $('#dPano').onclick = () => playDoors(p.name, 'Stepping inside', () => openPano(p));
+  if($('#dPano')) $('#dPano').onclick = () => { track('pano', { id }); playDoors(nm(p), T('steppingInside'), () => openPano(p)); };
   if(!walk.active && !eye.on) map.flyTo({ center:p.ll, zoom:Math.max(map.getZoom(), 17.3), padding:paddingFor(), duration:900 });
   if(isPhone()) $('#panel').classList.remove('min');
 }
 function directionsTo(id){
-  const v = venueOf(byId(id)), start = `${v.key}:${v.entrance}`;
+  const v = venueOf(byId(id)), start = me.poi ? 'me' : `${v.key}:${v.entrance}`;
   stops = (start === id || !byId(start)) ? [id] : [start, id];
+  track('route_to', { id });
   setTab('route');
 }
 
@@ -1094,7 +1164,7 @@ function renderStops(){
   const ol = $('#stops'); ol.innerHTML = '';
   stops.forEach((id, i) => {
     const p = byId(id), li = document.createElement('li'); li.className = 'stop'; li.dataset.id = id;
-    li.innerHTML = `<button class="grip" aria-label="Drag to reorder ${esc(p.name)}" title="Drag to reorder">${UI.grip}</button><span class="n">${i+1}</span><span class="nm">${id === 'me' ? '📍 My location' + (me.acc ? ` <span class="small muted">±${Math.round(me.acc)} m</span>` : '') : esc(p.name)}</span>`;
+    li.innerHTML = `<button class="grip" aria-label="Drag to reorder ${esc(p.name)}" title="Drag to reorder">${UI.grip}</button><span class="n">${i+1}</span><span class="nm">${id === 'me' ? '📍 ' + (me.fixed ? T('youAreHere') : T('myLocation')) + (me.acc && !me.fixed ? ` <span class="small muted">±${Math.round(me.acc)} m</span>` : '') : esc(nm(p))}</span>`;
     const acts = document.createElement('span'); acts.className = 'row'; acts.style.gap = '0';
     const ic = (name, label, dis, fn) => { const b = document.createElement('button'); b.className = 'icon'; b.innerHTML = UI[name]; b.title = label; b.setAttribute('aria-label', `${label} (stop ${i+1})`); b.disabled = dis; b.onclick = fn; acts.appendChild(b); };
     ic('up', 'Move up', i === 0, () => moveStop(i, i-1)); ic('down', 'Move down', i === stops.length-1, () => moveStop(i, i+1)); ic('x', 'Remove', false, () => { stops.splice(i, 1); renderStops(); planRoute(); });
@@ -1104,8 +1174,8 @@ function renderStops(){
     grip.addEventListener('pointerdown', e => startDrag(e, li, i));
     ol.appendChild(li);
   });
-  const sel = $('#addSel'); sel.innerHTML = '<option value="">Add a place…</option>' +
-    visiblePois().filter(p => !stops.includes(p.uid)).map(p => `<option value="${p.uid}">${esc(p.name)}${viewBoth ? ' · ' + esc(venueOf(p).short) : ''}</option>`).join('');
+  const sel = $('#addSel'); sel.innerHTML = `<option value="">${T('addPlace')}</option>` +
+    visiblePois().filter(p => !stops.includes(p.uid)).map(p => `<option value="${p.uid}">${p.num ? esc(p.num) + ' · ' : ''}${esc(nm(p))}${viewBoth ? ' · ' + esc(venueOf(p).short) : ''}</option>`).join('');
   refreshPinState();
 }
 function moveStop(a, b, focus){ const [x] = stops.splice(a, 1); stops.splice(b, 0, x); renderStops(); planRoute(); if(focus) $$('#stops .grip')[b]?.focus(); }
@@ -1130,16 +1200,19 @@ async function planRoute(){
   const passed = pois.filter(p => !stops.includes(p.uid) && coords.some((c, i) => i && projectOnSeg(p.ll, coords[i-1], c).d < 18));
   const anyApprox = legs.some(l => !l.ok);
   out.innerHTML = `
-    <div class="card"><div class="sum"><div><b>${fmtDist(total)}</b><span class="small muted">distance</span></div><div><b>${fmtMin(total)}</b><span class="small muted">walking</span></div><div><b>${stops.length}</b><span class="small muted">stops</span></div></div>
+    <div class="card"><div class="sum"><div><b>${fmtDist(total)}</b><span class="small muted">${T('distance')}</span></div><div><b>${fmtMin(total)}</b><span class="small muted">${T('walking')}</span></div><div><b>${stops.length}</b><span class="small muted">${T('stops')}</span></div></div>
       ${anyApprox ? '<p class="small" style="color:var(--warn);margin:4px 0 0">Dashed parts: no mapped walkway found, shown as a straight line.</p>' : ''}
-      <div class="row" style="margin-top:8px"><button class="btn pri" id="walkBtn">${UI.play} Start guided walk</button><button class="btn" id="eyeWalkBtn">Walk in walker’s eyes</button><button class="btn" id="testSnd">${UI.sound} Test sound</button></div>
-      <div class="row" style="margin-top:8px"><button class="btn blue" id="gpsWalkBtn">📍 I’m here — guide me as I walk</button></div>
-      <p class="small muted" style="margin:6px 0 0">Guide me as I walk follows your phone’s location: each place is read out when you reach it.</p></div>
-    <ol class="legs">${legs.map((l, i) => `<li><b>${i+1} → ${i+2}</b> ${esc(byId(l.from).name)} → ${esc(byId(l.to).name)} · ${fmtDist(l.dist)}, ${fmtMin(l.dist)}</li>`).join('')}</ol>
+      <div class="row" style="margin-top:8px"><button class="btn pri" id="walkBtn">${UI.play} ${T('startWalk')}</button><button class="btn" id="eyeWalkBtn">${T('eyesWalk')}</button><button class="btn" id="testSnd">${UI.sound} ${T('testSound')}</button></div>
+      <div class="row" style="margin-top:8px"><button class="btn blue nokiosk" id="gpsWalkBtn">${T('gpsWalk')}</button></div>
+      <p class="small muted nokiosk" style="margin:6px 0 0">Guide me as I walk follows your phone’s location: each place is read out when you reach it.</p>
+      <p class="small" id="gpsStatus" style="margin:6px 0 0;color:var(--warn)"></p></div>
+    <ol class="legs">${legs.map((l, i) => `<li><b>${i+1} → ${i+2}</b> ${esc(l.from === 'me' ? T('youAreHere') : nm(byId(l.from)))} → ${esc(nm(byId(l.to)))} · ${fmtDist(l.dist)}, ${fmtMin(l.dist)}</li>`).join('')}</ol>
     ${passed.length ? `<p class="small muted">On the way: ${passed.map(p => esc(p.name)).join(', ')}</p>` : ''}`;
-  $('#walkBtn').onclick = () => startWalk('follow');
-  $('#gpsWalkBtn').onclick = () => startLocating(() => { if(stops[0] !== 'me' && distM(me.poi.ll, route.coords[0]) > 60){ stops = ['me', ...stops]; legCache.clear(); renderStops(); planRoute().then(() => route && startWalk('follow', true)); } else startWalk('follow', true); });
-  $('#eyeWalkBtn').onclick = () => startWalk('eyes');
+  $('#walkBtn').onclick = () => { track('walk_start', {}); startWalk('follow'); };
+  $('#gpsWalkBtn').onclick = () => startLocating(() => { track('walk_gps', {});
+    const firstPlace = byId(stops.find(s => s !== 'me')), far = firstPlace ? distM(me.poi.ll, firstPlace.ll) : 0;
+    if(far > 1500) toast(`You are ${fmtDist(far)} from ${firstPlace.name}. Follow the blue line; the guide reads each place when you get there.`, 8000); if(stops[0] !== 'me' && distM(me.poi.ll, route.coords[0]) > 60){ stops = ['me', ...stops]; legCache.clear(); renderStops(); planRoute().then(() => route && startWalk('follow', true)); } else startWalk('follow', true); });
+  $('#eyeWalkBtn').onclick = () => { track('walk_start', { view:'eyes' }); startWalk('eyes'); };
   $('#testSnd').onclick = testSound;
   if(!walk.active){ const b = new maplibregl.LngLatBounds(); coords.forEach(c => b.extend(c)); map.fitBounds(b, { padding:paddingFor(), maxZoom:18, duration:900, pitch:map.getPitch(), bearing:map.getBearing() }); }
 }
@@ -1167,7 +1240,7 @@ function tourOrder(ids, keepLast){
 const voice = { tts:null, synth:('speechSynthesis' in window) ? window.speechSynthesis : null, synthVoice:null, synthTok:0,
   denied:false, broken:false, muted:false, blocked:false, speaking:false, lastStart:0, ttsStalled:false };
 try{ voice.muted = localStorage.getItem('rf-muted') === '1'; }catch{}
-function pickSynthVoice(){ try{ const vs = voice.synth.getVoices(); voice.synthVoice = vs.find(v => /^en[-_]IN/i.test(v.lang)) || vs.find(v => /^en[-_]GB/i.test(v.lang)) || vs.find(v => /^en/i.test(v.lang)) || vs[0] || null; }catch{} }
+function pickSynthVoice(){ try{ const vs = voice.synth.getVoices(); voice.hiVoice = vs.find(v => /^hi[-_]IN/i.test(v.lang)) || vs.find(v => /^hi/i.test(v.lang)) || null; voice.synthVoice = vs.find(v => /^en[-_]IN/i.test(v.lang)) || vs.find(v => /^en[-_]GB/i.test(v.lang)) || vs.find(v => /^en/i.test(v.lang)) || vs[0] || null; }catch{} }
 async function initVoice(){
   if(voice.synth){ pickSynthVoice(); try{ voice.synth.addEventListener('voiceschanged', pickSynthVoice); }catch{} }
   if(window.claude?.use){ try{ voice.tts = await window.claude.use('tts'); voice.tts?.onState?.(e => { voice.speaking = e.state === 'speaking' || e.state === 'starting'; if(e.state === 'idle' && e.reason === 'viewer_stopped') voice.blocked = true; if(e.state === 'idle' && (e.reason === 'not_granted' || e.reason === 'unavailable')) voice.denied = true; updateVoiceUI(); }); }catch{} }
@@ -1178,7 +1251,7 @@ const canSpeak = () => (useTts() || !!voice.synth) && !voice.denied && !voice.br
 function speakNow(text){
   if(voice.muted || voice.blocked || !canSpeak() || !text) return Promise.resolve(false);
   if(useTts()){
-    let call; try{ call = voice.tts.speak(text.slice(0, 1900), { language:'en' }); }catch{ call = null; }
+    let call; try{ call = voice.tts.speak(text.slice(0, 1900), { language: lang === 'hi' ? 'hi' : 'en' }); }catch{ call = null; }
     if(!call || typeof call.then !== 'function'){ voice.ttsStalled = true; return voice.synth ? synthSpeak(text) : Promise.resolve(false); }
     return call.then(() => true, err => { const c = err?.code;
       if(c === 'not_granted') voice.denied = true;
@@ -1193,9 +1266,9 @@ function synthSpeak(text){
     const s = voice.synth, tok = ++voice.synthTok; let finished = false, started = false, i = 0;
     const fin = ok => { if(!finished){ finished = true; voice.speaking = false; updateVoiceUI(); res(ok); } };
     try{ s.cancel(); }catch{}
-    const parts = (text.match(/[^.!?]+[.!?]*/g) || [text]).map(x => x.trim()).filter(Boolean);
+    const parts = (text.match(/[^.!?।]+[.!?।]*/g) || [text]).map(x => x.trim()).filter(Boolean);
     const next = () => { if(tok !== voice.synthTok) return fin(false); if(i >= parts.length) return fin(true);
-      const u = new SpeechSynthesisUtterance(parts[i++]); if(voice.synthVoice){ u.voice = voice.synthVoice; u.lang = voice.synthVoice.lang; } else u.lang = 'en-IN';
+      const u = new SpeechSynthesisUtterance(parts[i++]); const vv = lang === 'hi' ? voice.hiVoice : voice.synthVoice; if(vv){ u.voice = vv; u.lang = vv.lang; } else u.lang = lang === 'hi' ? 'hi-IN' : 'en-IN';
       u.onstart = () => { started = true; voice.speaking = true; voice.lastStart = performance.now(); updateVoiceUI(); };
       u.onend = () => next();
       u.onerror = e => { if(e.error === 'not-allowed'){ voice.blocked = true; fin(false); } else if(e.error === 'interrupted' || e.error === 'canceled') fin(false); else next(); };
@@ -1226,7 +1299,7 @@ function voiceStatus(){
 }
 function updateVoiceUI(){
   const pm = $('#plSound'); if(!pm) return; const on = soundIsOn();
-  pm.innerHTML = (on ? UI.sound : UI.muted) + `<span>${on ? 'Sound on' : 'Sound off'}</span>`; pm.classList.toggle('on', on);
+  pm.innerHTML = (on ? UI.sound : UI.muted) + `<span>${on ? T('soundOn') : T('soundOff')}</span>`; pm.classList.toggle('on', on);
   const vs = $('#plVoice'), t = voiceStatus(); vs.textContent = t; vs.classList.toggle('live', voice.speaking && on);
 }
 
@@ -1277,8 +1350,9 @@ function setWalkView(v){
   if(eyes) walk.speed = Math.min(walk.speed, 4.5); else walk.speed = Math.max(walk.speed, Math.max(8, Math.min(28, route.total / 90)));
   if(v === 'map'){ const b = new maplibregl.LngLatBounds(); route.coords.forEach(c => b.extend(c)); map.fitBounds(b, { padding:paddingFor(), pitch:45, duration:800, maxZoom:18 }); }
 }
-function stopText(i){ if(stops[i] === 'me') return ''; const p = byId(stops[i]); return p ? `${p.name}. ${p.desc} ${p.note ? 'At the Biennale: ' + p.note : ''}` : ''; }
+function stopText(i){ if(stops[i] === 'me') return ''; const p = byId(stops[i]); return p ? `${p.num ? p.num + '. ' : ''}${nm(p)}. ${p.artist ? T('artist') + ': ' + p.artist + '. ' : ''}${ds(p)} ${nt(p) ? T('atBiennale') + ': ' + nt(p) : ''}` : ''; }
 function arriveAt(i){
+  if(stops[i] && stops[i] !== 'me') markVisited(stops[i]);
   walk.stopIdx = i; walk.state = 'speaking'; walk.t0 = performance.now(); walk.speechDone = false;
   walk.marker?.getElement().classList.add('pointing');
   selected = stops[i]; refreshPinState();
@@ -1335,9 +1409,9 @@ function tick(now){
 let userIsInteracting = false;
 function updatePlayer(){
   const p = byId(stops[walk.stopIdx]), nxt = byId(stops[walk.stopIdx + 1]);
-  $('#plName').textContent = walk.state === 'done' ? 'Walk complete' : walk.state === 'moving' && nxt ? `Walking to ${nxt.name}` : (p?.name || 'Guided walk');
+  $('#plName').textContent = walk.state === 'done' ? T('walkDone') : walk.state === 'moving' && nxt ? `${T('walkingTo')} ${nm(nxt)}` : (p ? (p.uid === 'me' ? T('youAreHere') : nm(p)) : T('guidedWalk'));
   const gpsInfo = walk.gps && walk.state !== 'done' && route ? (walk.offBy ? ` · ${Math.round(walk.offBy)} m off the route` : nxt ? ` · ${fmtDist(Math.max(0, route.stopS[walk.stopIdx + 1] - walk.s))} to go` : '') + ' · following your location' : '';
-  $('#plSub').textContent = (walk.state === 'done' ? `${stops.length} stops · ${fmtDist(route.total)}` : `Stop ${walk.stopIdx + 1} of ${stops.length}` + (walk.state === 'speaking' ? ' · here now' : '')) + gpsInfo;
+  $('#plSub').textContent = (walk.state === 'done' ? `${stops.length} ${T('stops')} · ${fmtDist(route.total)}` : `${T('stop')} ${walk.stopIdx + 1} / ${stops.length}` + (walk.state === 'speaking' ? ' · ' + T('hereNow') : '')) + gpsInfo;
   const pb = $('#plPlay');
   if(walk.state === 'done'){ pb.innerHTML = UI.replay; pb.title = 'Walk again'; pb.setAttribute('aria-label','Walk again'); }
   else { pb.innerHTML = walk.paused ? UI.play : UI.pause; pb.title = walk.paused ? 'Resume' : 'Pause'; pb.setAttribute('aria-label', pb.title); }
@@ -1506,7 +1580,7 @@ let addMode = false, moveId = null, editId = null, mVenue = null;
 const dirty = {};                                   // venue -> unsaved changes
 let folderHandle = null;                            // the real-map folder, chosen once per session (Chrome / Edge)
 const manageAllowed = () => MANAGE || location.protocol === 'file:' || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
-function renderManage(){
+function renderManageCore(){
   const box = $('#vManage');
   mVenue = viewBoth ? (mVenue || activeVenue) : activeVenue;
   const venue = mVenue, list = pois.filter(p => p.venue === venue);
@@ -1599,6 +1673,11 @@ async function saveForEveryone(k){
       const dir = await folderHandle.getDirectoryHandle(folder, { create:true }), name = `${k}-${p.id}.jpg`;
       await write(dir, name, await (await fetch(v)).blob()); p[field] = `${folder}/${name}`;
     }
+    for(const p of store[k].pois) if(p.gallery) for(let gi = 0; gi < p.gallery.length; gi++){
+      const v = p.gallery[gi]; if(!v.startsWith('data:')) continue;
+      const dir = await folderHandle.getDirectoryHandle('photos', { create:true }), name = `${k}-${p.id}-${gi + 2}.jpg`;
+      await write(dir, name, await (await fetch(v)).blob()); p.gallery[gi] = `photos/${name}`;
+    }
     const data = cleanData(k), json = JSON.stringify(data, null, 1);
     await write(folderHandle, VENUES[k].file, json);
     // keep the copy built into each page in step, so double-clicking the page shows the same places
@@ -1615,20 +1694,25 @@ async function saveForEveryone(k){
 /* ================= my location: route from where you are, walk with GPS ================= */
 const me = { watch:null, poi:null, acc:null, marker:null, lastPlan:null, offSince:0 };
 function nearestVenue(ll){ return VENUE_KEYS.slice().sort((a, b) => distM(ll, VENUES[a].home.center) - distM(ll, VENUES[b].home.center))[0]; }
+function gpsStatus(msg){ const el = $('#gpsStatus'); if(el) el.innerHTML = msg || ''; }
 function startLocating(cb){
-  if(!navigator.geolocation){ toast('This device can’t share its location.'); return; }
+  if(me.fixed){ cb?.(); return; }   // kiosk: the fixed kiosk position is “you are here”
+  if(!navigator.geolocation){ toast('This device can’t share its location.'); gpsStatus('This browser can’t share its location.'); return; }
+  if(!isSecureContext){ gpsStatus('Location only works on an https address (for example GitHub Pages).'); return; }
   if(me.poi){ cb?.(); }
   if(me.watch != null) return;
   let first = !me.poi;
-  toast('Finding your location…');
+  toast('Finding your location…'); gpsStatus('Finding your location… (allow location if the browser asks)');
   me.watch = navigator.geolocation.watchPosition(pos => {
     const ll = [pos.coords.longitude, pos.coords.latitude]; me.acc = pos.coords.accuracy;
     me.poi = { uid:'me', id:'me', name:'My location', cat:'facility', icon:'accessible', desc:'', note:'', ll, lng:ll[0], lat:ll[1], venue:nearestVenue(ll), pos:'gps' };
     if(!me.marker){ const el = document.createElement('div'); el.className = 'me-ring'; el.title = 'You are here'; me.marker = new maplibregl.Marker({ element:el }).setLngLat(ll).addTo(map); } else me.marker.setLngLat(ll);
-    if(first){ first = false; cb?.(); }
+    if(first){ first = false; gpsStatus(''); cb?.(); }
     onMyPosition(ll);
   }, err => {
-    toast(err.code === 1 ? 'Location is blocked for this page. Allow location in the browser’s site settings and try again.' : 'Couldn’t get your location. Try outdoors or turn on location services.', 6000);
+    const m = err.code === 1 ? 'Location is blocked for this page. On the phone: tap the icon left of the address (or Settings › Site settings › Location), allow it, then reload. Also check the phone’s Location setting is on.' : 'Couldn’t get your location yet. Turn on the phone’s Location, step outdoors, and try again.';
+    toast(m, 7000); gpsStatus(m + ' <button class="btn" id="practiceBtn" style="margin-top:6px">Practice walk instead</button>');
+    const pb = $('#practiceBtn'); if(pb) pb.onclick = () => startWalk('follow');
     stopLocating();
   }, { enableHighAccuracy:true, maximumAge:3000, timeout:25000 });
 }
@@ -1715,6 +1799,7 @@ function setVenue(k){
 }
 function onMapClick(e){
   if(svMode){ openStreetView(e.lngLat.toArray(), map.getBearing()); setSV(false); return; }
+  if(tab === 'manage' && settingHere){ const ll = e.lngLat.toArray().map(v => +v.toFixed(6)); settingHere = false; try{ localStorage.setItem('bfm-kiosk-pos', JSON.stringify(ll)); }catch{} loadKioskPos(); renderStops(); renderManage(); toast('“You are here” set for this kiosk.'); return; }
   if(tab === 'manage' && addMode){ addPointAt(e.lngLat.toArray()); return; }
   if(tab === 'manage' && moveId){ const ll = e.lngLat.toArray(), id = moveId; moveId = null; updatePoi(id, { lat:+ll[1].toFixed(6), lng:+ll[0].toFixed(6) }); toast('Point moved.'); return; }
 }
@@ -1730,13 +1815,20 @@ async function init(){
   await Promise.all(VENUE_KEYS.map(loadVenueData)); rebuildPois();
   if(LOCKED_VENUE){ activeVenue = LOCKED_VENUE; viewBoth = false; document.title = `${VENUES[LOCKED_VENUE].short} · Biennale Map`; $('#title').textContent = VENUES[LOCKED_VENUE].name; }
   stops = VENUES[activeVenue].defaultStops.map(id => `${activeVenue}:${id}`).filter(byId);
-  if(manageAllowed()) $('#tabManage').hidden = false;
+  if(manageAllowed() && (!KIOSK || MANAGE)) $('#tabManage').hidden = false;
+  if(KIOSK){ document.body.classList.add('kiosk'); ['pointerdown','keydown','wheel'].forEach(ev => addEventListener(ev, bumpIdle, { passive:true })); addEventListener('contextmenu', e => e.preventDefault()); }
+  applyStatic(); registerSW();
+  $('#bLang').onclick = () => setLang(lang === 'hi' ? 'en' : 'hi');
+  $$('.langbtn').forEach(b => b.onclick = () => setLang(b.dataset.lang));
+  $('#wlGo').onclick = hideWelcome;
   for(const k of VENUE_KEYS) if(store[k]?._dirty) dirty[k] = true;
   $('#meBtn').onclick = useMyLocation;
   if(typeof maplibregl === 'undefined'){ document.getElementById('map').innerHTML = '<p style="padding:20px;max-width:420px;margin-left:auto">The map engine could not load. Check the internet connection and reload.</p>'; return; }
   initMap();
   renderVenueSeg(); renderChips(); renderList(); renderStops();
   renderPins(); bindEyeDrag();   // pins and controls work even if the base map never loads
+  loadKioskPos(); renderStops(); track('page_open', {});
+  if(KIOSK) showWelcome(); else track('session_start', {});
   prepareVenues();
   ['dragstart','zoomstart','rotatestart','pitchstart'].forEach(ev => map.on(ev, e => { if(e.originalEvent) userIsInteracting = true; }));
   ['dragend','zoomend','rotateend','pitchend'].forEach(ev => map.on(ev, e => { if(e.originalEvent) setTimeout(() => userIsInteracting = false, 2500); }));
@@ -1765,6 +1857,255 @@ async function init(){
   if(!walk.raf) walk.raf = requestAnimationFrame(tick);
 }
 init();
+
+/* ================= language (English / हिन्दी) ================= */
+const I18N = {
+  explore:['Explore','खोजें'], directions:['Directions','रास्ता'], manage:['Manage','प्रबंधन'],
+  search:['Search exhibits, artists, places','प्रदर्शनी, कलाकार, स्थान खोजें'], allPlaces:['All places','सभी स्थान'],
+  dirHere:['Directions here','यहाँ का रास्ता'], addStop:['Add stop','पड़ाव जोड़ें'], removeStop:['Remove stop','पड़ाव हटाएँ'],
+  lookAround:['Look around (eye level)','चारों ओर देखें'], walkGate:['Walk through the gate','द्वार से अंदर चलें'],
+  stepInside:['Step inside · 360° view','अंदर जाएँ · 360° दृश्य'], steppingInside:['Stepping inside','अंदर जा रहे हैं'],
+  atBiennale:['At the Biennale','बिएनाले में'], artist:['Artist','कलाकार'], video:['Watch the video','वीडियो देखें'],
+  approx:['approximate position','अनुमानित स्थान'], approxShort:['approx.','अनुमानित'], posOsm:['position from OpenStreetMap','स्थान: OpenStreetMap'], posClient:['position from the Biennale site plan','स्थान: बिएनाले साइट योजना'],
+  noMatch:['No places match.','कोई स्थान नहीं मिला।'], addPlace:['Add a place…','स्थान जोड़ें…'],
+  startMe:['📍 Start from my location','📍 मेरी जगह से शुरू करें'], myLocation:['My location','मेरी जगह'], youAreHere:['You are here','आप यहाँ हैं'],
+  routeIntro:['Tap pins or add stops. Routes follow real walkways.','पिन छुएँ या पड़ाव जोड़ें। रास्ते असली पैदल मार्गों पर चलते हैं।'],
+  keepLast:['Keep my last stop last','आख़िरी पड़ाव आख़िर में रखें'], optimize:['Find the shortest order','सबसे छोटा क्रम'],
+  visitAll:['Visit every place','हर स्थान देखें'], clear:['Reset route','रास्ता रीसेट करें'],
+  startWalk:['Start guided walk','निर्देशित सैर शुरू करें'], eyesWalk:['Walk in walker’s eyes','चलने वाले की नज़र से'], gpsWalk:['📍 I’m here — guide me as I walk','📍 मैं यहाँ हूँ — चलते समय मार्गदर्शन करें'],
+  testSound:['Test sound','आवाज़ जाँचें'], distance:['distance','दूरी'], walking:['walking','पैदल'], stops:['stops','पड़ाव'], stop:['Stop','पड़ाव'],
+  endWalk:['End walk','सैर समाप्त'], soundOn:['Sound on','आवाज़ चालू'], soundOff:['Sound off','आवाज़ बंद'],
+  walkDone:['Walk complete','सैर पूरी हुई'], walkingTo:['Walking to','जा रहे हैं:'], guidedWalk:['Guided walk','निर्देशित सैर'], hereNow:['here now','यहाँ हैं'],
+  vMap:['Map','नक्शा'], vFollow:['Follow','साथ चलें'], vEyes:['Walker’s eyes','चलने वाले की नज़र'],
+  welcomeTitle:['Purana Qila','पुराना किला'], welcomeSub:['The India Biennale 2026 · Explore the exhibition','इंडिया बिएनाले 2026 · प्रदर्शनी देखें'],
+  exploreBtn:['Explore the Biennale','बिएनाले देखें'], highlights:['Exhibition highlights','प्रदर्शनी की झलकियाँ'],
+  scan:['Scan to take the map on your phone','नक्शा फ़ोन पर ले जाने के लिए स्कैन करें'], touch:['Touch to start','शुरू करने के लिए छुएँ'],
+  visited:['Visited','देखा गया'], notVisited:['Not yet visited','अभी नहीं देखा'], selected:['Selected','चुना गया'],
+  startAgain:['Start again','फिर से शुरू करें'], idleSoon:['Still there? The map will reset soon.','क्या आप अभी भी यहाँ हैं? नक्शा जल्द रीसेट होगा।'],
+  exhibitsCount:['exhibits','प्रदर्शनियाँ'],
+  cat_biennale:['Biennale exhibits','बिएनाले प्रदर्शनियाँ','Biennale exhibit','बिएनाले प्रदर्शनी'], cat_event:['Events','कार्यक्रम','Event','कार्यक्रम'],
+  cat_gate:['Gates','द्वार','Gate','द्वार'], cat_monument:['Palaces & monuments','महल और स्मारक','Monument','स्मारक'],
+  cat_museum:['Museums','संग्रहालय','Museum','संग्रहालय'], cat_garden:['Gardens','उद्यान','Garden','उद्यान'], cat_facility:['Visitor services','आगंतुक सेवाएँ','Visitor service','आगंतुक सेवा']
+};
+const VENUE_HI = { 'red-fort':'लाल किला', 'purana-qila':'पुराना किला' };
+let lang = (() => { try{ return localStorage.getItem('bfm-lang') || 'en'; }catch{ return 'en'; } })();
+if(params.get('lang') === 'hi' || params.get('lang') === 'en') lang = params.get('lang');
+const T = k => (I18N[k] ? I18N[k][lang === 'hi' ? 1 : 0] : k);
+const catLabel = c => I18N['cat_' + c] ? I18N['cat_' + c][lang === 'hi' ? 1 : 0] : (CATS[c]?.label || c);
+const catOne = c => I18N['cat_' + c] ? I18N['cat_' + c][lang === 'hi' ? 3 : 2] : (CATS[c]?.one || c);
+const nm = p => (lang === 'hi' && p.name_hi) || p.name;
+const ds = p => (lang === 'hi' && p.desc_hi) || p.desc || '';
+const nt = p => (lang === 'hi' && p.note_hi) || p.note || '';
+function applyStatic(){
+  document.documentElement.lang = lang === 'hi' ? 'hi' : 'en';
+  $$('[data-i18n]').forEach(el => el.textContent = T(el.dataset.i18n));
+  $$('[data-i18n-ph]').forEach(el => el.placeholder = T(el.dataset.i18nPh));
+  $$('.langbtn').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang));
+  const lb = $('#bLang'); if(lb) lb.textContent = lang === 'hi' ? 'EN' : 'हिं';
+}
+function setLang(l){
+  if(l === lang) return; lang = l; try{ localStorage.setItem('bfm-lang', l); }catch{}
+  track('lang', { lang:l });
+  applyStatic(); renderPins(); renderChips(); renderList(); renderStops();
+  if(selected && !$('#vDetail').hidden) showDetail(selected);
+  if(tab === 'route' && route) planRoute();
+  if(walk.active) updatePlayer();
+  renderWelcome();
+}
+
+/* ================= visited / not yet visited ================= */
+const visited = new Set();
+function markVisited(id){ if(!id || id === 'me' || visited.has(id)) return; visited.add(id); refreshPinState(); }
+const _refreshPinState = refreshPinState;
+refreshPinState = function(){ _refreshPinState(); markers.forEach(({ el }, id) => el.classList.toggle('visited', visited.has(id))); };
+
+/* ================= analytics (stored on this device; export as CSV) ================= */
+const STATS_KEY = 'bfm-stats';
+let sessionId = Math.random().toString(36).slice(2, 9), sessionStart = Date.now();
+function track(type, data){
+  try{
+    const a = JSON.parse(localStorage.getItem(STATS_KEY) || '[]');
+    a.push({ t:new Date().toISOString(), s:sessionId, k:KIOSK ? 'kiosk' : (isPhone() ? 'mobile' : 'desktop'), lang, type, ...data });
+    if(a.length > 20000) a.splice(0, a.length - 20000);
+    localStorage.setItem(STATS_KEY, JSON.stringify(a));
+  }catch{}
+}
+function statsSummary(){
+  let a = []; try{ a = JSON.parse(localStorage.getItem(STATS_KEY) || '[]'); }catch{}
+  const sessions = new Set(a.map(e => e.s)), opens = {}, routes = {};
+  a.forEach(e => { if(e.type === 'open_place') opens[e.name] = (opens[e.name] || 0) + 1; if(e.type === 'route_to'){ const p = byId(e.id); routes[p ? p.name : e.id] = (routes[p ? p.name : e.id] || 0) + 1; } });
+  const top = o => Object.entries(o).sort((x, y) => y[1] - x[1]).slice(0, 10);
+  const cnt = t => a.filter(e => e.type === t).length;
+  const hi = a.filter(e => e.type === 'lang' && e.lang === 'hi').length;
+  return { events:a.length, sessions:sessions.size, first:a[0]?.t, top:top(opens), topRoutes:top(routes), walks:cnt('walk_start'), gps:cnt('walk_gps'), eye:cnt('eye'), pano:cnt('pano'), hi, raw:a };
+}
+function exportStats(){
+  const { raw } = statsSummary(); const cols = ['t','s','k','lang','type','id','name'];
+  const csv = [cols.join(',')].concat(raw.map(e => cols.map(c => `"${String(e[c] ?? '').replace(/"/g, '""')}"`).join(','))).join('\n');
+  const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv], { type:'text/csv' })); a.download = `biennale-map-analytics-${new Date().toISOString().slice(0, 10)}.csv`; a.click();
+}
+
+/* ================= kiosk mode (?kiosk) ================= */
+const KIOSK = params.has('kiosk');
+const IDLE_SECONDS = +params.get('idle') || 120;
+const WELCOME_IMAGE = '';      // set to e.g. 'images/purana-qila.jpg' when the approved AI-generated visual is ready
+const MOBILE_URL = () => { const u = new URL(location.href); u.searchParams.delete('kiosk'); u.searchParams.delete('manage'); u.searchParams.delete('idle'); return u.toString(); };
+let idleTimer = null, idleWarn = null, orbitRaf = null;
+function renderWelcome(){
+  const box = $('#wlCards'); if(!box) return;
+  const feat = pois.filter(p => p.featured && !p.hidden).slice(0, 6);
+  box.innerHTML = feat.map(p => `<button class="wl-card" data-id="${p.uid}"><span class="ico" style="--cat:var(--c-${p.cat})">${iconSvg(iconKey(p))}</span><span><b>${esc(nm(p))}</b><small>${p.num ? esc(p.num) + ' · ' : ''}${esc(catOne(p.cat))}</small></span></button>`).join('');
+  box.querySelectorAll('.wl-card').forEach(b => b.onclick = () => { hideWelcome(); showDetail(b.dataset.id); });
+  const n = pois.filter(p => p.cat === 'biennale' && !p.hidden && (!LOCKED_VENUE || p.venue === LOCKED_VENUE)).length;
+  $('#wlCount').textContent = `${n} ${T('exhibitsCount')}`;
+}
+function showWelcome(){
+  if(!KIOSK) return;
+  renderWelcome(); $('#welcome').hidden = false; document.body.classList.add('welcoming');
+  if(WELCOME_IMAGE){ $('#wlBg').style.backgroundImage = `url("${WELCOME_IMAGE}")`; $('#wlBg').classList.add('img'); }
+  else if(!reduceMotion){
+    // slow orbit around the fort behind the welcome screen
+    const v = VENUES[activeVenue].home; map.jumpTo({ center:v.center, zoom:v.zoom - .2, pitch:62, bearing:map.getBearing() });
+    const spin = () => { if($('#welcome').hidden) return; map.setBearing((map.getBearing() + 0.06) % 360); orbitRaf = requestAnimationFrame(spin); };
+    cancelAnimationFrame(orbitRaf); orbitRaf = requestAnimationFrame(spin);
+  }
+  makeQR();
+}
+function hideWelcome(){
+  $('#welcome').hidden = true; document.body.classList.remove('welcoming'); cancelAnimationFrame(orbitRaf);
+  sessionId = Math.random().toString(36).slice(2, 9); sessionStart = Date.now(); track('session_start', {});
+  if(KIOSK && !document.fullscreenElement) document.documentElement.requestFullscreen?.().catch(() => {});
+  flyHome(false);
+}
+function resetKiosk(){
+  track('session_end', { secs:Math.round((Date.now() - sessionStart)/1000) });
+  if(walk.active) endWalk(); endEye(true); $('#pano').hidden = true; $('#doors').hidden = true;
+  visited.clear(); selected = null; catFilter = null; $('#q').value = '';
+  stops = []; route = null; setRouteData(); renderStops(); $('#routeOut').innerHTML = '';
+  if(me.fixed) stops = ['me'];
+  setTab('explore'); $('#vDetail').hidden = true; $('#vExplore').hidden = false;
+  if(lang !== 'en') setLang('en');
+  renderChips(); renderList(); refreshPinState(); toastClose();
+  showWelcome();
+}
+function toastClose(){ $('#toast').hidden = true; }
+function bumpIdle(){
+  if(!KIOSK) return; clearTimeout(idleTimer); clearTimeout(idleWarn);
+  if(!$('#welcome').hidden) return;
+  idleWarn = setTimeout(() => { if(!walk.active || walk.paused) toast(T('idleSoon'), 15000); }, (IDLE_SECONDS - 15) * 1000);
+  idleTimer = setTimeout(() => { if(walk.active && !walk.paused && walk.state !== 'done') return bumpIdle(); resetKiosk(); }, IDLE_SECONDS * 1000);
+}
+async function makeQR(){
+  const box = $('#qr'); if(!box || box.dataset.done === MOBILE_URL()) return;
+  try{
+    if(!window.qrcode) await new Promise((res, rej) => { const s = document.createElement('script'); s.src = 'https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js'; s.onload = res; s.onerror = rej; document.head.appendChild(s); });
+    const q = qrcode(0, 'M'); q.addData(MOBILE_URL()); q.make();
+    box.innerHTML = q.createSvgTag({ cellSize:5, margin:2, scalable:true }); box.dataset.done = MOBILE_URL();
+  }catch{ box.innerHTML = `<small>${esc(MOBILE_URL())}</small>`; }
+}
+
+/* ================= kiosk position (“You are here”) ================= */
+function loadKioskPos(){
+  let ll = null;
+  const qp = params.get('here'); if(qp){ const [la, ln] = qp.split(',').map(Number); if(isFinite(la) && isFinite(ln)) ll = [ln, la]; }
+  if(!ll) try{ ll = JSON.parse(localStorage.getItem('bfm-kiosk-pos') || 'null'); }catch{}
+  if(!ll) return;
+  me.fixed = true; me.acc = 0;
+  me.poi = { uid:'me', id:'me', name:'You are here', cat:'facility', icon:'accessible', desc:'', note:'', ll, lng:ll[0], lat:ll[1], venue:nearestVenue(ll), pos:'kiosk' };
+  const el = document.createElement('div'); el.className = 'here'; el.innerHTML = `<span class="me-ring"></span><b data-i18n="youAreHere">${T('youAreHere')}</b>`;
+  me.marker?.remove(); me.marker = new maplibregl.Marker({ element:el, anchor:'bottom' }).setLngLat(ll).addTo(map);
+  if(!stops.includes('me')) stops = ['me', ...stops];
+}
+let settingHere = false;
+
+/* ================= offline (service worker + “download for offline use”) ================= */
+function registerSW(){
+  if(!('serviceWorker' in navigator) || !(location.protocol === 'https:' || /^(localhost|127\.0\.0\.1)$/.test(location.hostname))) return;
+  navigator.serviceWorker.register('sw.js').catch(() => {});
+}
+async function prepareOffline(btn){
+  if(!navigator.serviceWorker?.controller){ toast('Offline use needs the published https site (GitHub Pages). Open it there, reload once, then try again.', 7000); return; }
+  const urls = new Set([STYLE_LIGHT, STYLE_DARK, TILEJSON, 'https://unpkg.com/maplibre-gl@5.13.0/dist/maplibre-gl.js', 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js', 'https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js', 'pois.json', 'pois-purana-qila.json']);
+  for(const s of [STYLE_LIGHT, STYLE_DARK]){
+    try{ const st = await (await fetch(s)).json();
+      const sp = Array.isArray(st.sprite) ? st.sprite.map(x => x.url) : [st.sprite]; sp.filter(Boolean).forEach(u => ['.json', '.png', '@2x.json', '@2x.png'].forEach(e => urls.add(u + e)));
+      const fonts = new Set(); st.layers.forEach(l => (l.layout?.['text-font'] || []).forEach?.(f => fonts.add(f)));
+      ['Noto Sans Regular', 'Noto Sans Bold'].forEach(f => fonts.add(f));
+      fonts.forEach(f => ['0-255', '256-511', '2304-2559', '8192-8447'].forEach(r => urls.add(st.glyphs.replace('{fontstack}', encodeURIComponent(f)).replace('{range}', r))));
+    }catch{}
+  }
+  const tpl = await getTileTpl();
+  const b = new maplibregl.LngLatBounds(); VENUE_KEYS.forEach(k => { b.extend(offsetM(VENUES[k].bounds[0], -1500, -1500)); b.extend(offsetM(VENUES[k].bounds[1], 1500, 1500)); });
+  for(let z = 10; z <= 14; z++){ const a = llToTile(b.getWest(), b.getNorth(), z), c = llToTile(b.getEast(), b.getSouth(), z);
+    for(let x = a[0]; x <= c[0]; x++) for(let y = a[1]; y <= c[1]; y++) urls.add(tpl.replace('{z}', z).replace('{x}', x).replace('{y}', y)); }
+  for(const k of VENUE_KEYS) for(let z = 15; z <= 18; z++){ const vb = VENUES[k].bounds, a = llToTile(vb[0][0], vb[1][1], z), c = llToTile(vb[1][0], vb[0][1], z);
+    for(let x = a[0]; x <= c[0]; x++) for(let y = a[1]; y <= c[1]; y++) urls.add(SAT_TILES.replace('{z}', z).replace('{x}', x).replace('{y}', y)); }
+  pois.forEach(p => [p.photo, p.pano, ...(p.gallery || [])].forEach(u => { if(u && !u.startsWith('data:')) urls.add(u); }));
+  const list = [...urls]; let done = 0, fail = 0;
+  const work = async () => { while(list.length){ const u = list.pop(); try{ const r = await fetch(u, { mode:u.startsWith('http') && !u.includes('openfreemap') && !u.includes('arcgis') ? 'no-cors' : 'cors' }); if(!r.ok && r.type !== 'opaque') fail++; }catch{ fail++; } done++; if(btn) btn.textContent = `Downloading… ${done}/${urls.size}`; } };
+  await Promise.all(Array.from({ length:6 }, work));
+  if(btn) btn.textContent = 'Download for offline use';
+  localStorage.setItem('bfm-offline', new Date().toISOString());
+  toast(`Offline copy ready: ${done - fail} files saved${fail ? `, ${fail} failed (try again)` : ''}. Walkway routes inside the forts also work offline.`, 8000);
+  if(tab === 'manage') renderManage();
+}
+
+/* ================= manage: extra exhibit fields, kiosk, offline, analytics ================= */
+function renderManage(){
+  renderManageCore();
+  const box = $('#vManage'), p = editId ? byId(editId) : null;
+  if(p){
+    const card = document.createElement('div'); card.className = 'card';
+    card.innerHTML = `<b>Exhibit details</b>
+      <div class="row" style="flex-wrap:nowrap"><div style="flex:1"><label class="f" for="mNum">Exhibit number</label><input type="text" id="mNum" value="${esc(p.num || '')}" placeholder="E01"></div>
+        <div style="flex:2"><label class="f" for="mArtist">Artist / exhibitor</label><input type="text" id="mArtist" value="${esc(p.artist || '')}"></div></div>
+      <label class="f" for="mNameHi">Name in Hindi</label><input type="text" id="mNameHi" value="${esc(p.name_hi || '')}" lang="hi">
+      <label class="f" for="mDescHi">Description in Hindi</label><textarea id="mDescHi" rows="3" lang="hi">${esc(p.desc_hi || '')}</textarea>
+      <label class="f" for="mNoteHi">Biennale note in Hindi</label><textarea id="mNoteHi" rows="2" lang="hi">${esc(p.note_hi || '')}</textarea>
+      <label class="f">More photos (${(p.gallery || []).length})</label>
+      <div class="row"><label class="btn">Add photos<input type="file" id="mGal" accept="image/*" multiple hidden></label>${(p.gallery || []).length ? '<button class="btn" id="mGalX">Remove all</button>' : ''}</div>
+      <label class="f" for="mVideo">Video (link or .mp4 path)</label><input type="text" id="mVideo" value="${esc(p.video || '')}" placeholder="videos/exhibit.mp4 or https://…">
+      <label class="check"><input type="checkbox" id="mFeat" ${p.featured ? 'checked' : ''}> Show in “Exhibition highlights”</label>
+      <label class="check"><input type="checkbox" id="mHide" ${p.hidden ? 'checked' : ''}> Hide from visitors (staff only)</label>
+      ${p.check ? `<p class="small" style="color:var(--warn)">Check: ${esc(p.check)}</p>` : ''}`;
+    box.insertBefore(card, $('#mCopy').closest('.row'));
+    const edit = patch => updatePoi(p.uid, patch, true);
+    $('#mNum').onchange = e => edit({ num:e.target.value.trim() || undefined });
+    $('#mArtist').onchange = e => edit({ artist:e.target.value.trim() || undefined });
+    $('#mNameHi').onchange = e => edit({ name_hi:e.target.value.trim() || undefined });
+    $('#mDescHi').onchange = e => edit({ desc_hi:e.target.value.trim() || undefined });
+    $('#mNoteHi').onchange = e => edit({ note_hi:e.target.value.trim() || undefined });
+    $('#mVideo').onchange = e => edit({ video:e.target.value.trim() || undefined });
+    $('#mFeat').onchange = e => edit({ featured:e.target.checked || undefined });
+    $('#mHide').onchange = e => edit({ hidden:e.target.checked || undefined });
+    $('#mGal').onchange = async e => { const add = []; for(const f of e.target.files){ if(f.size <= 20e6) add.push(await shrinkImage(f, 1600)); } edit({ gallery:[...(p.gallery || []), ...add] }); };
+    if($('#mGalX')) $('#mGalX').onclick = () => edit({ gallery:undefined });
+  }
+  const s = statsSummary(), off = (() => { try{ return localStorage.getItem('bfm-offline'); }catch{ return null; } })();
+  const extra = document.createElement('div');
+  extra.innerHTML = `
+    <div class="card"><b>Kiosk</b>
+      <p class="small muted" style="margin:4px 0">Kiosk mode: large touch layout, welcome screen with highlights and a QR code, English/हिन्दी, resets after ${IDLE_SECONDS} s without a touch. Open the page with <code>?kiosk</code>.</p>
+      <div class="row"><a class="btn" href="${esc(location.pathname + '?kiosk' + location.hash)}">Open kiosk mode</a>
+        <button class="btn ${settingHere ? 'blue' : ''}" id="mHere">${settingHere ? 'Tap the kiosk’s spot on the map…' : (me.fixed ? 'Move “You are here”' : 'Set this kiosk’s location')}</button>
+        ${me.fixed ? '<button class="btn" id="mHereX">Clear</button>' : ''}</div>
+      <p class="small muted" style="margin:4px 0 0">“You are here” is saved on this kiosk only and becomes the start of every route. You can also add <code>&here=lat,lng</code> to the kiosk address.</p></div>
+    <div class="card"><b>Offline</b>
+      <p class="small muted" style="margin:4px 0">Saves the map, places, photos and libraries on this device so the kiosk keeps working if the internet drops. ${off ? 'Last saved: ' + new Date(off).toLocaleString() : 'Not saved yet.'}</p>
+      <button class="btn" id="mOffline">Download for offline use</button></div>
+    <div class="card"><b>Visitor analytics (this device)</b>
+      <div class="sum" style="flex-wrap:wrap"><div><b>${s.sessions}</b><span class="small muted">sessions</span></div><div><b>${s.walks}</b><span class="small muted">guided walks</span></div><div><b>${s.gps}</b><span class="small muted">GPS walks</span></div><div><b>${s.eye + s.pano}</b><span class="small muted">eye-level / 360°</span></div><div><b>${s.hi}</b><span class="small muted">switched to हिन्दी</span></div></div>
+      ${s.top.length ? `<p class="small" style="margin:8px 0 2px"><b>Most viewed</b></p><ol class="small" style="margin:0;padding-left:20px">${s.top.map(([n, c]) => `<li>${esc(n)} · ${c}</li>`).join('')}</ol>` : '<p class="small muted">No visits recorded yet.</p>'}
+      ${s.topRoutes.length ? `<p class="small" style="margin:8px 0 2px"><b>Most asked-for directions</b></p><ol class="small" style="margin:0;padding-left:20px">${s.topRoutes.map(([n, c]) => `<li>${esc(n)} · ${c}</li>`).join('')}</ol>` : ''}
+      <div class="row" style="margin-top:8px"><button class="btn" id="mStats">Export CSV</button><button class="btn" id="mStatsX">Clear</button></div>
+      <p class="small muted" style="margin:6px 0 0">Counts are kept on each device. Export from every kiosk to combine them.</p></div>`;
+  box.appendChild(extra);
+  $('#mHere').onclick = () => { settingHere = !settingHere; addMode = false; moveId = null; renderManage(); if(settingHere) toast('Tap the spot where this kiosk stands.'); };
+  if($('#mHereX')) $('#mHereX').onclick = () => { try{ localStorage.removeItem('bfm-kiosk-pos'); }catch{} me.fixed = false; me.poi = null; me.marker?.remove(); me.marker = null; stops = stops.filter(s => s !== 'me'); renderStops(); renderManage(); };
+  $('#mOffline').onclick = e => prepareOffline(e.target);
+  $('#mStats').onclick = exportStats;
+  $('#mStatsX').onclick = () => { if(confirm('Clear the analytics stored on this device?')){ try{ localStorage.removeItem(STATS_KEY); }catch{} renderManage(); } };
+}
 </script>
 </body>
 </html>

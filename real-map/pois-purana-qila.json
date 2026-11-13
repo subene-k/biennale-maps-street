@@ -1,6 +1,6 @@
 {
  "version": 2,
- "updated": "2026-11-12",
+ "updated": "2026-11-13",
  "coords": "WGS84 lat/lng (OpenStreetMap where pos=osm, otherwise approximate)",
  "pois": [
   {
@@ -12,7 +12,9 @@
    "note": "",
    "pos": "approx",
    "lat": 28.60872,
-   "lng": 77.2419
+   "lng": 77.2419,
+   "name_hi": "प्रवेश और बिएनाले पास जाँच",
+   "desc_hi": "बड़ा दरवाज़ा के बाहर पास स्कैनिंग, झील के पास। बिएनाले पास से किले में प्रवेश होता है, अलग स्मारक टिकट की ज़रूरत नहीं।"
   },
   {
    "id": "bara",
@@ -22,7 +24,9 @@
    "note": "",
    "pos": "osm",
    "lat": 28.608863,
-   "lng": 77.242318
+   "lng": 77.242318,
+   "name_hi": "बड़ा दरवाज़ा",
+   "desc_hi": "लाल बलुआ पत्थर का मुख्य पश्चिमी द्वार, विशाल बुर्जों से घिरा और ऊपर गुंबददार छतरियाँ। यह झील की ओर खुलता है।"
   },
   {
    "id": "humayun",
@@ -32,7 +36,9 @@
    "note": "",
    "pos": "osm",
    "lat": 28.606881,
-   "lng": 77.245388
+   "lng": 77.245388,
+   "name_hi": "हुमायूँ दरवाज़ा",
+   "desc_hi": "दक्षिणी द्वार, मुग़ल बादशाह हुमायूँ के नाम पर।"
   },
   {
    "id": "talaqi",
@@ -42,7 +48,9 @@
    "note": "",
    "pos": "osm",
    "lat": 28.611714,
-   "lng": 77.241629
+   "lng": 77.241629,
+   "name_hi": "तलाकी दरवाज़ा",
+   "desc_hi": "उत्तरी द्वार, जिसे अक्सर निषिद्ध द्वार कहा जाता है।"
   },
   {
    "id": "mosque",
@@ -52,7 +60,10 @@
    "note": "",
    "pos": "osm",
    "lat": 28.609745,
-   "lng": 77.244816
+   "lng": 77.244816,
+   "name_hi": "किला-ए-कुहना मस्जिद",
+   "desc_hi": "1541 में शेरशाह सूरी द्वारा बनवाई गई एक गुंबद वाली मस्जिद, जिसके प्रार्थना कक्ष में लाल बलुआ पत्थर के पाँच मेहराबदार हिस्से हैं, संगमरमर और स्लेट की जड़ाई के साथ।",
+   "featured": true
   },
   {
    "id": "shermandal",
@@ -62,7 +73,10 @@
    "note": "",
    "pos": "osm",
    "lat": 28.608658,
-   "lng": 77.24506
+   "lng": 77.24506,
+   "name_hi": "शेर मंडल",
+   "desc_hi": "लाल बलुआ पत्थर की दो-मंज़िला अष्टकोणीय मीनार। हुमायूँ इसे पुस्तकालय के रूप में इस्तेमाल करते थे और 1556 में इसकी सीढ़ियों से गिरने के बाद उनकी मृत्यु हुई।",
+   "featured": true
   },
   {
    "id": "baoli",
@@ -72,17 +86,21 @@
    "note": "",
    "pos": "osm",
    "lat": 28.609224,
-   "lng": 77.244301
+   "lng": 77.244301,
+   "name_hi": "बावली",
+   "desc_hi": "एक बावली जो चरणों में पानी तक उतरती है।"
   },
   {
    "id": "museum",
-   "name": "Archaeological Site Museum",
+   "name": "ASI Museum (Archaeological Site Museum)",
    "cat": "museum",
    "desc": "Objects found in excavations at the fort, from pottery to coins.",
    "note": "",
-   "pos": "osm",
-   "lat": 28.608753,
-   "lng": 77.242454
+   "pos": "client",
+   "lat": 28.6083742,
+   "lng": 77.2429355,
+   "name_hi": "पुरातत्व स्थल संग्रहालय",
+   "desc_hi": "किले में हुई खुदाई से मिली वस्तुएँ, मिट्टी के बर्तनों से लेकर सिक्कों तक।"
   },
   {
    "id": "excavation",
@@ -91,9 +109,11 @@
    "icon": "dig",
    "desc": "Excavated trenches showing layers of settlement across many centuries. Tradition links the site with Indraprastha of the Mahabharata.",
    "note": "",
-   "pos": "approx",
-   "lat": 28.607843,
-   "lng": 77.246058
+   "pos": "client",
+   "lat": 28.6091922,
+   "lng": 77.2435802,
+   "name_hi": "उत्खनन स्थल",
+   "desc_hi": "खुदाई की खाइयाँ जो कई सदियों की बसावट की परतें दिखाती हैं। परंपरा इस स्थान को महाभारत के इंद्रप्रस्थ से जोड़ती है।"
   },
   {
    "id": "lake",
@@ -104,7 +124,9 @@
    "note": "",
    "pos": "approx",
    "lat": 28.6099,
-   "lng": 77.24085
+   "lng": 77.24085,
+   "name_hi": "पुराना किला झील",
+   "desc_hi": "किले के पश्चिमी ओर की झील, जहाँ नौका विहार होता है।"
   },
   {
    "id": "infodesk",
@@ -115,7 +137,9 @@
    "note": "Maps, programme guides and help with the Biennale app.",
    "pos": "approx",
    "lat": 28.609376,
-   "lng": 77.242397
+   "lng": 77.242397,
+   "name_hi": "बिएनाले सूचना डेस्क (उदाहरण)",
+   "desc_hi": "उदाहरण बिंदु। इसे Manage में बदलें या हटाएँ।"
   },
   {
    "id": "toilets",
@@ -126,18 +150,9 @@
    "note": "",
    "pos": "osm",
    "lat": 28.608233,
-   "lng": 77.240555
-  },
-  {
-   "id": "cafe",
-   "name": "Cafe (approximate)",
-   "cat": "facility",
-   "icon": "cafe",
-   "desc": "Approximate location. Confirm on site and adjust in Manage.",
-   "note": "",
-   "pos": "approx",
-   "lat": 28.609424,
-   "lng": 77.242919
+   "lng": 77.240555,
+   "name_hi": "शौचालय",
+   "desc_hi": "झील और प्रवेश के पास सार्वजनिक शौचालय, OpenStreetMap के अनुसार। मौके पर पुष्टि करें।"
   },
   {
    "id": "parking",
@@ -148,27 +163,360 @@
    "note": "",
    "pos": "osm",
    "lat": 28.607986,
-   "lng": 77.240582
+   "lng": 77.240582,
+   "name_hi": "पार्किंग",
+   "desc_hi": "झील और प्रवेश के पास कार पार्क, OpenStreetMap के अनुसार। मौके पर पुष्टि करें।"
   },
   {
-   "id": "exhibitA",
-   "name": "Exhibit spot A (example)",
+   "id": "swiss",
+   "num": "E01",
+   "name": "Swiss Embassy",
+   "name_hi": "स्विस दूतावास",
    "cat": "biennale",
-   "desc": "Example exhibit position on the north lawn.",
-   "note": "Replace with the real installation name, artist and timings.",
-   "pos": "approx",
-   "lat": 28.61008,
-   "lng": 77.242671
+   "artist": "",
+   "desc": "Exhibit details to be added: artist, description, photos.",
+   "desc_hi": "प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।",
+   "note": "",
+   "lat": 28.6092763,
+   "lng": 77.2440627,
+   "pos": "client"
   },
   {
-   "id": "exhibitB",
-   "name": "Exhibit spot B (example)",
+   "id": "audi",
+   "num": "E02",
+   "name": "Audi",
+   "name_hi": "ऑडी",
    "cat": "biennale",
-   "desc": "Example exhibit position on the south lawn.",
-   "note": "Replace with the real installation name, artist and timings.",
-   "pos": "approx",
-   "lat": 28.607789,
-   "lng": 77.245261
+   "artist": "",
+   "desc": "Exhibit details to be added: artist, description, photos.",
+   "desc_hi": "प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।",
+   "note": "",
+   "lat": 28.6089805,
+   "lng": 77.2441247,
+   "pos": "client"
+  },
+  {
+   "id": "rmz",
+   "num": "E03",
+   "name": "RMZ",
+   "name_hi": "RMZ",
+   "cat": "biennale",
+   "artist": "",
+   "desc": "Exhibit details to be added: artist, description, photos.",
+   "desc_hi": "प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।",
+   "note": "",
+   "lat": 28.6090114,
+   "lng": 77.2449619,
+   "pos": "client"
+  },
+  {
+   "id": "pav",
+   "num": "E04",
+   "name": "PAV",
+   "name_hi": "PAV",
+   "cat": "biennale",
+   "artist": "",
+   "desc": "Exhibit details to be added: artist, description, photos.",
+   "desc_hi": "प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।",
+   "note": "",
+   "lat": 28.6093449,
+   "lng": 77.245208,
+   "pos": "client"
+  },
+  {
+   "id": "northeast",
+   "num": "E05",
+   "name": "North East",
+   "name_hi": "पूर्वोत्तर",
+   "cat": "biennale",
+   "artist": "",
+   "desc": "Exhibit details to be added: artist, description, photos.",
+   "desc_hi": "प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।",
+   "note": "",
+   "lat": 28.6092531,
+   "lng": 77.2460499,
+   "pos": "client"
+  },
+  {
+   "id": "serendipity",
+   "num": "E06",
+   "name": "Serendipity",
+   "name_hi": "सेरेन्डिपिटी",
+   "cat": "biennale",
+   "artist": "",
+   "desc": "Exhibit details to be added: artist, description, photos.",
+   "desc_hi": "प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।",
+   "note": "",
+   "lat": 28.610406,
+   "lng": 77.2441364,
+   "pos": "client",
+   "featured": true
+  },
+  {
+   "id": "dag",
+   "num": "E07",
+   "name": "DAG",
+   "name_hi": "DAG",
+   "cat": "biennale",
+   "artist": "",
+   "desc": "Exhibit details to be added: artist, description, photos.",
+   "desc_hi": "प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।",
+   "note": "",
+   "lat": 28.6107577,
+   "lng": 77.2443859,
+   "pos": "client"
+  },
+  {
+   "id": "pav-pk-sk",
+   "num": "E08",
+   "name": "PAV · Payal Kapoor + Seema Kohli",
+   "name_hi": "PAV · पायल कपूर + सीमा कोहली",
+   "cat": "biennale",
+   "artist": "Payal Kapoor, Seema Kohli",
+   "desc": "Exhibit details to be added: artist, description, photos.",
+   "desc_hi": "प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।",
+   "note": "",
+   "lat": 28.6114547,
+   "lng": 77.2424607,
+   "pos": "client",
+   "featured": true
+  },
+  {
+   "id": "dhoomil",
+   "num": "E09",
+   "name": "Dhoomil",
+   "name_hi": "धूमिल",
+   "cat": "biennale",
+   "artist": "",
+   "desc": "Exhibit details to be added: artist, description, photos.",
+   "desc_hi": "प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।",
+   "note": "",
+   "lat": 28.61223,
+   "lng": 77.2424624,
+   "pos": "client"
+  },
+  {
+   "id": "ardee",
+   "num": "E10",
+   "name": "Student pavilion by Ardee",
+   "name_hi": "आर्डी द्वारा छात्र मंडप",
+   "cat": "biennale",
+   "artist": "Ardee",
+   "desc": "Exhibit details to be added: artist, description, photos.",
+   "desc_hi": "प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।",
+   "note": "",
+   "lat": 28.6120487,
+   "lng": 77.2409319,
+   "pos": "client"
+  },
+  {
+   "id": "pav-states",
+   "num": "E11",
+   "name": "PAV States",
+   "name_hi": "PAV राज्य",
+   "cat": "biennale",
+   "artist": "",
+   "desc": "Exhibit details to be added: artist, description, photos.",
+   "desc_hi": "प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।",
+   "note": "",
+   "lat": 28.6113953,
+   "lng": 77.2420903,
+   "pos": "client",
+   "check": "Two positions were given for PAV States; the second list’s position is used."
+  },
+  {
+   "id": "pati",
+   "num": "E12",
+   "name": "Pati",
+   "name_hi": "पाटी",
+   "cat": "biennale",
+   "artist": "",
+   "desc": "Exhibit details to be added: artist, description, photos.",
+   "desc_hi": "प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।",
+   "note": "",
+   "lat": 28.6090035,
+   "lng": 77.2424611,
+   "pos": "client",
+   "check": "Latitude given as 20.6090035; read as 28.6090035."
+  },
+  {
+   "id": "jsw",
+   "num": "E13",
+   "name": "JSW",
+   "name_hi": "JSW",
+   "cat": "biennale",
+   "artist": "",
+   "desc": "Exhibit details to be added: artist, description, photos.",
+   "desc_hi": "प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।",
+   "note": "",
+   "lat": 28.6082982,
+   "lng": 77.244008,
+   "pos": "client"
+  },
+  {
+   "id": "hungary",
+   "num": "E14",
+   "name": "Hungary",
+   "name_hi": "हंगरी",
+   "cat": "biennale",
+   "artist": "",
+   "desc": "Exhibit details to be added: artist, description, photos.",
+   "desc_hi": "प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।",
+   "note": "",
+   "lat": 28.606981,
+   "lng": 77.2453387,
+   "pos": "client",
+   "check": "Longitude given as 77.4053387 (16 km away); read as 77.2453387. Please confirm."
+  },
+  {
+   "id": "nmacc",
+   "num": "E15",
+   "name": "NMACC",
+   "name_hi": "NMACC",
+   "cat": "biennale",
+   "artist": "",
+   "desc": "Exhibit details to be added: artist, description, photos.",
+   "desc_hi": "प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।",
+   "note": "",
+   "lat": 28.6102503,
+   "lng": 77.2427873,
+   "pos": "client"
+  },
+  {
+   "id": "knma-moc",
+   "num": "E16",
+   "name": "KNMA MOC",
+   "name_hi": "KNMA MOC",
+   "cat": "biennale",
+   "artist": "",
+   "desc": "Exhibit details to be added: artist, description, photos.",
+   "desc_hi": "प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।",
+   "note": "",
+   "lat": 28.6106459,
+   "lng": 77.2415055,
+   "pos": "client"
+  },
+  {
+   "id": "knma",
+   "num": "E17",
+   "name": "KNMA",
+   "name_hi": "KNMA",
+   "cat": "biennale",
+   "artist": "",
+   "desc": "Exhibit details to be added: artist, description, photos.",
+   "desc_hi": "प्रदर्शनी का विवरण जोड़ा जाना है: कलाकार, विवरण, फ़ोटो।",
+   "note": "",
+   "lat": 28.6101134,
+   "lng": 77.2419122,
+   "pos": "client",
+   "featured": true
+  },
+  {
+   "id": "event-shermandal",
+   "name": "Event space · Sher Mandal",
+   "name_hi": "कार्यक्रम स्थल · शेर मंडल",
+   "cat": "event",
+   "icon": "stage",
+   "desc": "Talks, performances and events. Schedule to be added.",
+   "desc_hi": "वार्ता, प्रस्तुतियाँ और कार्यक्रम। कार्यक्रम-सूची जोड़ी जानी है।",
+   "note": "",
+   "lat": 28.6086005,
+   "lng": 77.2453431,
+   "pos": "client",
+   "featured": true
+  },
+  {
+   "id": "event-tricolour",
+   "name": "Event space · behind the Tricolour",
+   "name_hi": "कार्यक्रम स्थल · तिरंगे के पीछे",
+   "cat": "event",
+   "icon": "stage",
+   "desc": "Talks, performances and events. Schedule to be added.",
+   "desc_hi": "वार्ता, प्रस्तुतियाँ और कार्यक्रम। कार्यक्रम-सूची जोड़ी जानी है।",
+   "note": "",
+   "lat": 28.6099583,
+   "lng": 77.24395,
+   "pos": "client"
+  },
+  {
+   "id": "hospitality",
+   "name": "Hospitality",
+   "name_hi": "आतिथ्य",
+   "cat": "facility",
+   "icon": "cafe",
+   "desc": "",
+   "desc_hi": "",
+   "note": "",
+   "lat": 28.6110485,
+   "lng": 77.2434699,
+   "pos": "client"
+  },
+  {
+   "id": "hospitality-jsw",
+   "name": "Hospitality (near JSW)",
+   "name_hi": "आतिथ्य (JSW के पास)",
+   "cat": "facility",
+   "icon": "cafe",
+   "desc": "",
+   "desc_hi": "",
+   "note": "",
+   "lat": 28.6074688,
+   "lng": 77.2448318,
+   "pos": "client"
+  },
+  {
+   "id": "amenities",
+   "name": "Amenities",
+   "name_hi": "सुविधाएँ",
+   "cat": "facility",
+   "icon": "toilet",
+   "desc": "",
+   "desc_hi": "",
+   "note": "",
+   "lat": 28.6107445,
+   "lng": 77.2432436,
+   "pos": "client"
+  },
+  {
+   "id": "skh-vip",
+   "name": "SKH + VIP",
+   "name_hi": "SKH + VIP",
+   "cat": "facility",
+   "icon": "info",
+   "desc": "",
+   "desc_hi": "",
+   "note": "",
+   "lat": 28.6088849,
+   "lng": 77.243024,
+   "pos": "client"
+  },
+  {
+   "id": "student-gate",
+   "name": "Student Entry Gate",
+   "name_hi": "छात्र प्रवेश द्वार",
+   "cat": "facility",
+   "icon": "exit",
+   "desc": "",
+   "desc_hi": "",
+   "note": "",
+   "lat": 28.6117538,
+   "lng": 77.241991,
+   "pos": "client",
+   "check": "“Student entry” (28.6118447, 77.2415521) and “Student Entry Gate” are about 40 m apart; the gate position is used."
+  },
+  {
+   "id": "storage",
+   "name": "Storage",
+   "name_hi": "भंडार",
+   "cat": "facility",
+   "icon": "shop",
+   "desc": "Staff only. Hidden from visitors.",
+   "desc_hi": "",
+   "note": "",
+   "lat": 28.6064985,
+   "lng": 77.2445492,
+   "pos": "client",
+   "hidden": true
   }
  ]
 }
